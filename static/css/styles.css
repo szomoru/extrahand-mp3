@@ -11510,7 +11510,21 @@ p {
   padding: 2rem;
 }
 
-#submit-btn {
-  width: 50%;
+.btn-row {
+  --bs-gutter-x: -10rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#switches {
+  display: flex;
+  align-self: center;
   align-items: center;
+  width: 100%;
+  text-align: left;
 }

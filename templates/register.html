@@ -1,44 +1,136 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Register</h3>
-
-    <div class="row">
-        <form class="col s12 m8 offset-m2"  method="POST" action="{{ url_for('register') }}">
-            <div class="card-panel">
+<div class="row">
+    <div class="col-xl-9 mx-auto section-middle">
+        <div class="cta-inner bg-faded text-center rounded">
+            <h3 class="form-header">Register New Member <i class="fas fa-user-plus"> </i></h3>
+            <hr>
+        <form method="POST" action="{{ url_for('register') }}">
                 <!-- Username -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
-                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="username">Username</label>
-                      </div>
-                </div>
+                <div class="row g-3 mb-3">
+                        <div class="col-12">
+                            <input id="username" placeholder="Username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required> 
+                            <label class="form-label" for="username"></label>
+                        </div>
+                </div>  
+
                 <!-- Password -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
-                        <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <input id="password" placeholder="Password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="password"></label>
                     </div>
                 </div>
-                <!-- Register -->
-                <div class="row">
-                    <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
-                        Register <i class="fas fa-sign-in-alt"></i>
-                    </button>
+                
+                <!-- First Name -->
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <input id="fname" placeholder="First name" name="fname" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="fname"></label>
+                    </div>
+                </div>    
+
+                <!-- Last Name and Age -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                            <input id="lname" placeholder="Last name" name="lname" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                            <label for="lname"></label>  
+                    </div>
+                    <div class="col-md-6">
+                            <input id="age" placeholder="Age" name="age" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                            <label for="age"></label>
+                    </div>
                 </div>
+
+                <!-- Address Line 1 -->
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <input id="address_l1" placeholder="Address line 1" name="address_l1" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="address_l1"></label>
+                      </div>
+                </div>
+
+                <!-- Address Line 2 -->
+                <div class="row g-3 mb-3">
+                    <div class="col-12">
+                        <input id="address_l2" placeholder="Address line 2" name="address_l2" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="address_l2"></label>
+                      </div>
+                </div>
+
+                <!-- City and Postcode -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <input id="city" placeholder="City" name="city" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="city"></label>
+                      </div>
+                      <div class="col-md-6">
+                        <input id="postcode" placeholder="Postcode" name="postcode" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="postcode"></label>
+                      </div>
+                </div>
+                <!-- Phone -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <input id="cell" placeholder="Phone number (+XX-XXX-XXX XXXX)" name="cell" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="cell"></label>
+                    </div>
+                
+                <!-- E-mail address -->
+                
+                    <div class="col-md-6">
+                        <input id="email" placeholder="E-mail Address" name="email" type="email" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
+                        <label for="email"></label>
+                    </div>
+                </div>
+
+                <!-- Switch #1 -->
+                <div id="switches" class="row g-3 mb-5">
+                    
+                        <div class="col-12 form-check form-switch">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">I Need Help</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"> 
+                        </div>
+                    
+                        <div class="col-12 form-check form-switch">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">I Want To Help</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"> 
+                        </div>
+                    
+                </div>
+                
+                <!-- Register and Clear form button -->
+                <div class="row g-3 mb-5">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary text-shadow">
+                            Clear Form <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary text-shadow">
+                            Register <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12">
+                        <p class="center-align">
+                            Already Registered? 
+                            <a href="{{ url_for('login') }}" class="light-blue-text text-darken-a">Log In</a>
+                        </p>
+                    </div>
+                </div>
+
+
             </div>
+        
         </form>
-    </div>
     
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Already Registered? 
-                <a href="{{ url_for('login') }}" class="light-blue-text text-darken-a">Log In</a>
-            </p>
         </div>
     </div>
+    
+    
 
 {% endblock %}
