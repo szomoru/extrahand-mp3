@@ -11501,3 +11501,16 @@ p {
   border-radius: 0.5rem;
 }
 
+.section-middle {
+  margin: 0;
+  padding: 1rem;
+}
+
+.form-header {
+  padding: 2rem;
+}
+
+#submit-btn {
+  width: 50%;
+  align-items: center;
+}
