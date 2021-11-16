@@ -11328,8 +11328,7 @@ p {
 .section-heading {
   text-transform: uppercase;
 }
-.section-heading,
- .section-heading-upper {
+.section-heading .section-heading-upper {
   display: block;
   font-size: 1rem;
   font-weight: 800;
@@ -11494,10 +11493,11 @@ p {
 
 /* --- Developer css --- */
 
-.index_tasks {
+.container_tasks {
   text-align: left;
   padding: 1.5rem;
-  background-color: rgba(230, 167, 86, 0.9);
+  background-color: rgba(230, 167, 86, 0.3);
   border-bottom: solid 3px #f6e1c5;
+  border-radius: 0.5rem;
 }
 

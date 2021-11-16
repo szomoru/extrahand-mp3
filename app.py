@@ -26,7 +26,8 @@ def get_tasks():
 
 @app.route("/home")
 def home():
-    return render_template("index.html")
+    tasks = mongo.db.tasks.find()
+    return render_template("index.html", tasks=tasks)
 
 
 @app.route("/register", methods=["GET", "POST"])

@@ -7,9 +7,12 @@
                     <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/static/assets/img/intro.jpg" alt="..." />
                     <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                         <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper">I need help -</span>
-                            <span class="section-heading-lower"><strong>I provide help</strong></span>
+                            <span><i><strong>"I need help"</i></strong></span>
                         </h2>
+                        <p class="mb-3">There are people who needs help in a certain period of their life and there are poeple who eager to help others in a certain period of their life ...</p>
+                        <h2 class="section-heading mb-4">
+                            <span><i><strong>"I provide help"</strong></i></span>
+                        </h2>                        
                         <p class="mb-3">There are people who needs help in a certain period of their life and there are poeple who eager to help others in a certain period of their life ...</p>
                         <h2 class="section-heading mb-4">If you are any of them</h2>
                         <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{{ url_for('register') }}">Register Today!</a></div>
@@ -17,6 +20,7 @@
                 </div>
             </div>
         </section>
+
         <section class="page-section cta">
             <div class="container">
                 <div class="row">
@@ -26,15 +30,15 @@
                                 <span class="section-heading-upper">Available Tasks for registered members</span>
                             </h2>
                             {% for task in tasks %}
-                                <div class="index_tasks">
-                                        <span class="section-heading-upper">Task Name: </span> {{ task.task_name }}<br>
-                                        <span class="section-heading-upper">Task Description: </span>{{ task.task_description }}<br>
-                                </div>
-                            {% endfor %}
-
+                                    <div class="container_tasks">
+                                        <span class="section-heading-upper"><strong>Task Name: </strong></span> {{ task.task_name }}<br>
+                                        <span class="section-heading-upper"><strong>Task Description: </strong></span>{{ task.task_description }}<br>
+                                    </div>    
+                            {% endfor %}                                                 
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 {% endblock %}
