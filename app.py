@@ -44,7 +44,18 @@ def register():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "fname": request.form.get("fname").lower(),
+            "lname": request.form.get("lname").lower(),
+            "age": request.form.get("age").lower(),
+            "address_l1": request.form.get("address_l1").lower(),
+            "address_l2": request.form.get("address_l2").lower(),
+            "city": request.form.get("city").lower(),
+            "postcode": request.form.get("postcode").lower(),
+            "cell": request.form.get("cell").lower(),
+            "email": request.form.get("email").lower(),
+            "on_want_help": request.form.get("on_want_help"),
+            "on_want_to_help": request.form.get("on_want_to_help")
         }
         mongo.db.users.insert_one(register)
 

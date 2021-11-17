@@ -11528,3 +11528,8 @@ form {
   width: 100%;
   text-align: left;
 }
+
+#flash_message {
+  display: flex;
+  align-items: center;
+}
