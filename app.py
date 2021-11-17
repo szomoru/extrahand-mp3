@@ -25,6 +25,19 @@ def get_tasks():
     return render_template("tasks.html", tasks=tasks)
 
 
+@app.route("/get_user_data")
+def get_user_data():
+    existing_user = mongo.db.users.find_one(user)
+    return render_template("profile.html", users=users)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    tasks = list(mongo.db.tasks.find({"$text": {"$search": query}}))
+    return render_template("profile.html", tasks=tasks)
+
+
 @app.route("/home")
 def home():
     tasks = mongo.db.tasks.find()
@@ -34,6 +47,7 @@ def home():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
@@ -41,6 +55,8 @@ def register():
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
+
+        is_help = "on" if request.form.get("is_help") else "off"
 
         register = {
             "username": request.form.get("username").lower(),
@@ -53,9 +69,7 @@ def register():
             "city": request.form.get("city").lower(),
             "postcode": request.form.get("postcode").lower(),
             "cell": request.form.get("cell").lower(),
-            "email": request.form.get("email").lower(),
-            "on_want_help": request.form.get("on_want_help"),
-            "on_want_to_help": request.form.get("on_want_to_help")
+            "email": request.form.get("email").lower()
         }
         mongo.db.users.insert_one(register)
 
@@ -79,8 +93,6 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                         session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("username")))
                         return redirect(url_for(
                             "profile", username=session["user"]))
             else:
@@ -101,11 +113,56 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    fname = mongo.db.users.find_one(
+        {"username": session["user"]})["fname"]
+    lname = mongo.db.users.find_one(
+        {"username": session["user"]})["lname"]
+    address_l1 = mongo.dlname = mongo.db.users.find_one(
+        {"username": session["user"]})["lname"]
+    address_l1 = mongo.db.users.find_one(
+        {"username": session["user"]})["address_l1"]
+    address_l2 = mongo.db.users.find_one(
+        {"username": session["user"]})["address_l2"]
+    city = mongo.db.users.find_one(
+        {"username": session["user"]})["city"]
+    postcode = mongo.db.users.find_one(
+        {"username": session["user"]})["postcode"]
+    cell = mongo.db.users.find_one(
+        {"username": session["user"]})["cell"]
+    email = mongo.db.users.find_one(
+        {"username": session["user"]})["email"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", 
+            username=username, fname=fname,
+            lname=lname, address_l1=address_l1, 
+            address_l2=address_l2, city=city, 
+            postcode=postcode, cell=cell, email=email)
 
     return redirect(url_for("login"))
+
+
+@app.route("/edit_profile/<profile_id>", methods=["GET", "POST"])
+def edit_profile():
+    if request.method == "POST":
+        submit = {
+            "username": request.form.get("username"),
+            "fname": request.form.get("fname"),
+            "lname": request.form.get("lname"),
+            "address_l1": request.form.get("address_l1"),
+            "address_l2": request.form.get("address_l2"),
+            "city": request.form.get("city"),
+            "postcode": request.form.get("postcode"),
+            "cell": request.form.get("cell"),
+            "email": request.form.get["email"]
+        }
+        mongo.db.users.update({"_id": ObjectId(profile_id)}, submit)
+        flash("Task Successfully Updated")
+
+    user = mongo.db.users.find_one({"_id": ObjectId(profile_id)})
+    
+    return render_template("profile.html", user=user)
+
 
 
 @app.route("/logout")
