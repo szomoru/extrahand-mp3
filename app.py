@@ -21,14 +21,8 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
-    tasks = mongo.db.tasks.find()
-    return render_template("tasks.html", tasks=tasks)
-
-
-@app.route("/get_user_data")
-def get_user_data():
-    existing_user = mongo.db.users.find_one(user)
-    return render_template("profile.html", users=users)
+    tasks = list(mongo.db.tasks.find())
+    return render_template("profile_alltask.html", tasks=tasks)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -162,7 +156,6 @@ def edit_profile():
     user = mongo.db.users.find_one({"_id": ObjectId(profile_id)})
     
     return render_template("profile.html", user=user)
-
 
 
 @app.route("/logout")

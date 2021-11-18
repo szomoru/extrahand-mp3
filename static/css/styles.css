@@ -348,7 +348,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+
   font-size: inherit;
   line-height: inherit;
 }
@@ -11549,4 +11549,25 @@ form {
 .cta {
   padding-top: 2rem;
   padding-bottom: 1rem;
+}
+
+
+#username,
+#password,
+#fname,
+#lname,
+#city,
+#address_l1,
+#address_l2,
+#age,
+#postcode,
+#cell,
+#email {
+  background-color: rgba(255, 255, 255, 0.7);
+  height: inherit;
+  padding: .5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  border-top: solid 1px rgba(230, 167, 86, 0.9);
+  border-left: solid 1px rgba(230, 167, 86, 0.9);
+  border-right: solid 1px rgba(230, 167, 86, 0.9);
 }

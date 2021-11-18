@@ -1,115 +1,56 @@
-{% extends "base_profile.html" %}
-
-{% block navigation %}
-
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Extra Hand</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                    href="{{ url_for('register') }}">All Tasks</a></li>
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                        href="{{ url_for('home') }}">Add New Task</a></li>
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                        href="{{ url_for('login') }}">Tasks Added by Me</a></li>
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                        href="{{ url_for('login') }}">Tasks I Applied For</a></li>
-                <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                        href="{{ url_for('logout') }}">Logout</a></li>
-            </ul>
-        </div>        
-    </div>
-</nav>
-
-<section>
-  <form method="POST" action="{{ url_for('search') }}">
-
-              <!-- Search Input field -->
-              <div class="row g-3 mb-3">
-                      <div class="col-md-6">
-                          <input id="query" placeholder="Username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required> 
-                          <label class="form-label" for="username"></label>
-                      </div>
-</section>
-
-{% endblock %}
-
+{% extends "base.html" %}
 
 
 {% block content %}
 
-        <section class="page-section cta">
-            <div class="container">
-                <div class="row">
-                    <div class="text-center rounded mb-5">
-                        <h3 class="section-heading">
-                            <span class="section-heading-lower">Welcome in {{ username }}</span>
-                        </h3>
-                    </div>
-                    <div class="col-xl-9 mx-auto">
-                        <div class="cta-inner bg-faded text-center rounded">
-                            <h2 class="section-heading mb-5">
-                                <span class="section-heading-upper">All available TAsks in the Database</span>
-                            </h2>
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                      Accordion Item #1
-                                    </button>
-                                  </h2>
-                                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                  </div>
-                                </div>
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="flush-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                      Accordion Item #2
-                                    </button>
-                                  </h2>
-                                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                                  </div>
-                                </div>
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="flush-headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                      Accordion Item #3
-                                    </button>
-                                  </h2>
-                                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                                  </div>
-                                </div>
-                              </div>
-                            <p class="address mb-5">
-                                <em>
-                                    <strong>1116 Orchard Street</strong>
-                                    <br />
-                                    Golden Valley, Minnesota
-                                </em>
-                            </p>
-                            <p class="mb-0">
-                                <small><em>Call Anytime</em></small>
-                                <br />
-                                (317) 585-8468
-                            </p>
-                        </div>
-                    </div>
-                </div>
+<section class="page-section cta">
+  <div class="container">
+    <div class="col-xl-9 mx-auto">
+      <div class="cta-inner bg-faded rounded">
+        <h2 class="section-heading mb-4">
+          <span class="section-heading-upper">All available Tasks in the Database</span>
+        </h2>
+
+        
+
+          
+          <button class="accordion mb-3">Accordion</button>
+            <div class="panel" style="max-height: 100px;">
+              <p><strong>Username: </strong></p> <br>
+              <p><strong>First name: </strong></p><br>
+
             </div>
-        </section>
-        <section class="page-section about-heading">
-            <div class="container">
+          
+          
                 
-            </div>
-        </section>
+          
+      
+
+        
+            
+        
+      </div>
+        
+        
+          <p class="address mb-5">
+            <em>
+                <strong>1116 Orchard Street</strong>
+                <br />
+                Golden Valley, Minnesota
+            </em>
+        </p>
+        <p class="mb-0">
+            <small><em>Call Anytime</em></small>
+            <br />
+            (317) 585-8468
+        </p>
+    </div>
+</div>
+</div>
+</section>  
+
+
+
 
 
 {% endblock %}
