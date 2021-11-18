@@ -11514,6 +11514,7 @@ p {
   --bs-gutter-x: -10rem;
 }
 
+
 form {
   display: flex;
   flex-direction: column;
@@ -11535,13 +11536,13 @@ form {
 }
 
 .member-title {
-  color: rgba(255, 255, 255);
+  color: rgba(47, 23, 15);
   margin: 0;
   padding: 10px;
   width: 50%;
   background-color: rgba(230, 167, 86, 0.9);
   font-weight: 500;
-  border: solid 2px rgba(255, 255, 255, 0.7);
+  border: solid 2px rgba(47, 23, 15, 0.7);
   border-radius: 5px;
   font-size: 1rem;
 }
@@ -11602,6 +11603,11 @@ form {
 #collaps-body li span {
   font-weight: 200;
   padding-left: 2rem;
+}
+
+#collaps-header-own svg,
+#collaps-header svg {
+  margin-right: 2rem;
 }
 
 .pos {

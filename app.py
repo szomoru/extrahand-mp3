@@ -192,6 +192,31 @@ def new_task():
     return render_template("profile_new_task.html")
 
 
+@app.route("/edit_task/<task_id>", methods=["GET", "POST"])
+def edit_task(task_id):
+    if request.method == "POST":
+        is_car = "on" if request.form.get("is_car") else "off"
+        is_outdoor = "on" if request.form.get("is_outdoor") else "off"
+        is_heavy_lift = "on" if request.form.get("is_heavy_lift") else "off"
+
+        submit = {
+            "task_name": request.form.get("task_name"),
+            "task_description": request.form.get("task_description"),
+            "compensation": request.form.get("compensation"),
+            "due_date": request.form.get("due_date"),
+            "duration": request.form.get("duration"),
+            "comment": request.form.get("comment"),
+            "created_by": session["user"],
+            "is_car": is_car,
+            "is_outdoor": is_outdoor,
+            "is_heavy_lift": is_heavy_lift,
+        }
+        mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
+        flash("Task Successfully Updated")
+
+    task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    return render_template("profile_edit_task.html", task=task)
+
 
 @app.route("/about")
 def about():
