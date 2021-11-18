@@ -25,8 +25,8 @@
             <span class="site-heading-upper text-primary mb-3">There is always someone who needs an</span>
             <span class="site-heading-lower">Extra Hand</span>
             {% if session.user %}
-                <div class="text-center text-faded d-none d-sm-block">
-                    <span class="member-title">Member's Area</span>
+                <div class="text-center text-faded d-none d-sm-block rounded">
+                    <span class="member-title"><strong>{{ session.user }}</strong> is logged in</span>
                 </div>
             {% endif %}
         </h1>
@@ -49,6 +49,8 @@
                             href="{{ url_for('new_task') }}">Add New Task</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
                             href="{{ url_for('login') }}">Tasks By Me</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
                             href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}

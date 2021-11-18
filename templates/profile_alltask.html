@@ -15,14 +15,19 @@
 
           {% for task in tasks %}
           <li>
-            <div id="collaps-header" class="collapsible-header">
-              <div class="col">
-                <strong>{{ task.task_name }}</strong>
-              </div>
-              <div class="col pos">
-                <i class="fas fa-ellipsis-v"></i>
-              </div>
-            </div>
+            {% if session.user|lower == task.created_by %}
+              <div id="collaps-header-own" class="collapsible-header">
+            {% else %}
+              <div id="collaps-header" class="collapsible-header">
+            {% endif %}
+                <div class="col">
+                  <strong>{{ task.task_name }}</strong>
+                </div>
+                <div class="col pos">
+                  <i class="fas fa-ellipsis-v"></i>
+                </div>
+              </div>  
+      
             <div id="collaps-body" class="collapsible-body">
               <ul>
                 <li class="section-heading-upper">Task Name:
@@ -31,18 +36,23 @@
                 <li class="section-heading-upper">Task Description:
                   <span>{{ task.task_description }}</span>
                 </li>
-                <li class="section-heading-upper">Task Name:
-                  <span>{{ task.task_name }}</span>
+                <li class="section-heading-upper">Additional Comment:
+                  <span>{{ task.comment }}</span>
                 </li>
-                <li class="section-heading-upper">Task Name:
-                  <span>{{ task.task_name }}</span>
+                <li class="section-heading-upper">Compensation:
+                  <span>{{ task.compensation }}</span>
                 </li>
-                <li class="section-heading-upper">Task Name:
-                  <span>{{ task.task_name }}</span>
+                <li class="section-heading-upper">Date of Task:
+                  <span>{{ task.due_date }}</span>
                 </li>
-                <li class="section-heading-upper">Task Name:
-                  <span>{{ task.task_name }}</span>
+                <li class="section-heading-upper">Duration of the Task:
+                  <span>{{ task.duration }}</span>
                 </li>
+                {% if session.user|lower != task.created_by %}
+                  <li class="section-heading-upper">Created by:
+                    <span>{{ task.created_by }}</span>
+                  </li>
+                {% endif %}
               </ul>
             </div>
           </li>
