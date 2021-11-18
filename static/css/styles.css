@@ -4084,13 +4084,13 @@ textarea.form-control-lg {
 }
 
 .navbar-toggler {
-  padding: 0.25rem 0.75rem;
-  font-size: 1.25rem;
-  line-height: 1;
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  transition: box-shadow 0.15s ease-in-out;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 1.25rem !important;
+  line-height: 1 !important;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.25rem !important;
+  transition: box-shadow 0.15s ease-in-out !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .navbar-toggler {
@@ -11601,4 +11601,13 @@ form {
 
 .pos {
   text-align:right;
+}
+
+
+#btn-index-register {
+  height: auto;
+}
+
+#btn-index-register a {
+  height: auto;
 }
