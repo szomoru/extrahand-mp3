@@ -1,56 +1,75 @@
 {% extends "base.html" %}
 
-
 {% block content %}
+
+<div class="row card-panel grey lighten-5">
+  <form action="{{ url_for('search') }}" method="post" class="col s12">
+      <div class="row valign-wrapper center-align">
+          <div class="input-field col s12 m8">
+              <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
+              <input type="text" name="query" id="query" minlength="3" class="validate" required>
+              <label for="query">Search Tasks</label>
+          </div>
+          <div class="col s12 m4">
+              <a href="{{ url_for('get_tasks') }}" class="red btn text-shadow">Reset</a>
+              <button type="submit" class="light-blue darken-1 btn text-shadow">
+                  <i class="fas fa-search left"></i> Search
+              </button>
+          </div>
+      </div>
+  </form>
+</div>
 
 <section class="page-section cta">
   <div class="container">
     <div class="col-xl-9 mx-auto">
       <div class="cta-inner bg-faded rounded">
         <h2 class="section-heading mb-4">
-          <span class="section-heading-upper">All available Tasks in the Database</span>
+          <span class="section-heading-upper text-center">All available Tasks in the Database</span>
         </h2>
 
-        
+        <!-- Materialize Accordion to show the tasks from database through for cycle -->
 
-          
-          <button class="accordion mb-3">Accordion</button>
-            <div class="panel" style="max-height: 100px;">
-              <p><strong>Username: </strong></p> <br>
-              <p><strong>First name: </strong></p><br>
-
+        <ul class="collapsible">
+          {% for task in tasks %}
+          <li>
+            <div id="collaps-header" class="collapsible-header">
+              <div class="col">
+                <strong>{{ task.task_name }}</strong>
+              </div>
+              <div class="col pos">
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
             </div>
-          
-          
-                
-          
-      
-
-        
-            
-        
+            <div id="collaps-body" class="collapsible-body">
+              <ul>
+                <li class="section-heading-upper">Task Name:
+                  <span>{{ task.task_name }}</span>
+                </li>
+                <li class="section-heading-upper">Task Description:
+                  <span>{{ task.task_description }}</span>
+                </li>
+                <li class="section-heading-upper">Task Name:
+                  <span>{{ task.task_name }}</span>
+                </li>
+                <li class="section-heading-upper">Task Name:
+                  <span>{{ task.task_name }}</span>
+                </li>
+                <li class="section-heading-upper">Task Name:
+                  <span>{{ task.task_name }}</span>
+                </li>
+                <li class="section-heading-upper">Task Name:
+                  <span>{{ task.task_name }}</span>
+                </li>
+              </ul>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
-        
-        
-          <p class="address mb-5">
-            <em>
-                <strong>1116 Orchard Street</strong>
-                <br />
-                Golden Valley, Minnesota
-            </em>
-        </p>
-        <p class="mb-0">
-            <small><em>Call Anytime</em></small>
-            <br />
-            (317) 585-8468
-        </p>
     </div>
-</div>
-</div>
-</section>  
-
-
-
-
+  </div>
+  </div>
+</section>
 
 {% endblock %}

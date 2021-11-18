@@ -11,8 +11,8 @@ window.addEventListener('DOMContentLoaded', event => {
    
 })
 
-document.addEventListener("DOMContentLoaded", function () {
-    
-})
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
 
       

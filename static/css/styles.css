@@ -11571,3 +11571,29 @@ form {
   border-left: solid 1px rgba(230, 167, 86, 0.9);
   border-right: solid 1px rgba(230, 167, 86, 0.9);
 }
+
+#collaps-header {
+  width: 100%;
+  background-color: rgba(230, 167, 86, 0.9);
+  padding: 0.5rem;
+}
+
+#collaps-body {
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem;
+}
+
+#collaps-body li {
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+}
+
+#collaps-body li span {
+  font-weight: 200;
+  padding-left: 2rem;
+}
+
+.pos {
+  text-align:right;
+}
