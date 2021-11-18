@@ -11562,7 +11562,12 @@ form {
 #age,
 #postcode,
 #cell,
-#email {
+#email,
+#task_name,
+#task_description,
+#compensation,
+#due_date,
+#duration {
   background-color: rgba(255, 255, 255, 0.7);
   height: inherit;
   padding: .5rem;

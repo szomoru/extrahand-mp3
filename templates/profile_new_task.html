@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-xl-9 mx-auto section-middle">
+        <div class="cta-inner bg-faded text-center rounded">
+            <h3 class="form-header">Register New Task <i class="fas fa-folder-plus"></i></h3>
+            <hr>
+        <form method="POST" action="{{ url_for('register') }}">
+
+                <!-- Task Name -->
+                <div class="row mb-3">
+                        <div class="col">
+                            <input id="task_name" placeholder="Task name" name="task_name" type="text" 
+                            minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required> 
+                            <label class="form-label" for="task_name">Give a name to your task</label>
+                        </div>
+                </div>
+
+                <!-- Task Description -->  
+                <div class="row mb-3">              
+                    <div class="col">
+                        <textarea id="task_description" placeholder="Task description" name="task_description" minlength="5"
+                        maxlength="200" class="form-control validate" required></textarea>
+                        <label class="form-label" for="task_description">Give a brief description about the task</label>
+                    </div>
+                </div>
+                
+                <!-- Compensation -->
+                <div class="row mb-3">
+                    <div class="col">
+                        <input id="compensation" placeholder="Compensation" name="compensation" type="text" class="form-control" required>
+                        <label for="compensation">What kind of compensation you can offer for the help (e.g free coffee/cake/lunch, some money etc ... )</label>
+                    </div>
+                </div>
+
+                <!-- Due Date picker from Materialize / Task duration -->
+                <div class="row mb-3 mx-auto">
+                    <div class="col-md-6">
+                            <input id="due_date" name="due_date" placeholder="Due date DD Month, YYYY" type="text" class="datepicker validate" required>
+                            <label for="due_date">Due Date</label>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <input id="duration" placeholder="Duration in hours" name="duration" type="number" class="form-control" required>
+                        <label for="duration">How long is the task?</label>
+                    </div>
+                </div>
+
+
+                <!-- Switches -->
+                <div id="switches" class="row mb-5 mx-auto">
+
+                    <div class="col-md-4">
+                        <div class="switch mb-3">
+                            <label> 
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                            Possibly car needed
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="switch mb-3">
+                            <label>
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                            Some part of the tsk is outdoor
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="switch mb-3">
+                            <label>
+                                <input type="checkbox">
+                                <span class="lever"></span>
+                                Task can contain heavy lifting tasks
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Register and Clear form button -->
+                <div class="row mb-5 mx-auto">
+                    <div class="col-md-6 mx-auto">
+                        <button type="submit" class="btn btn-primary text-shadow">
+                            Clear Form <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary text-shadow">
+                            Register <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        
+        </form>
+    
+        </div>
+    </div>
+    
+    
+
+{% endblock %}

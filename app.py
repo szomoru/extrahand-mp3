@@ -166,6 +166,33 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/new_task", methods=["GET", "POST"])
+def new_task():
+    if request.method == "POST":
+        is_car = "on" if request.form.get("is_car") else "off"
+        is_outdoor = "on" if request.form.get("is_outdoor") else "off"
+        is_heavy_lift = "on" if request.form.get("is_heavy_lift") else "off"
+        
+        task = {
+            "task_name": request.form.get("task_name"),
+            "task_description": request.form.get("task_description"),
+            "compensation": request.form.get("compensation"),
+            "due_date": request.form.get("due_date"),
+            "duration": request.form.get("duration"),
+            "comment": request.form.get("comment"),
+            "created_by": session["user"],
+            "is_car": is_car,
+            "is_outdoor": is_outdoor,
+            "is_heavy_lift": is_heavy_lift,
+        }
+        mongo.db.tasks.insert_one(task)
+        flash("Task Successfully Added")
+        return redirect(url_for("get_tasks"))
+
+    return render_template("profile_new_task.html")
+
+
+
 @app.route("/about")
 def about():
     return render_template("about.html")

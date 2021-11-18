@@ -46,11 +46,9 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
                             href="{{ url_for('get_tasks') }}">All Tasks</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                            href="{{ url_for('home') }}">Add New Task</a></li>
+                            href="{{ url_for('new_task') }}">Add New Task</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                            href="{{ url_for('login') }}">Tasks Added by Me</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                            href="{{ url_for('login') }}">Tasks I Applied For</a></li>
+                            href="{{ url_for('login') }}">Tasks By Me</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
                             href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}
