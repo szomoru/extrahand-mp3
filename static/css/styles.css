@@ -11609,9 +11609,14 @@ form {
   padding-left: 2rem;
 }
 
+#collaps-header-not-available svg,
 #collaps-header-own svg,
 #collaps-header svg {
   margin-right: 2rem;
+}
+
+#collaps-header-not-available {
+  background-color: #9e9e9e;
 }
 
 .collaps-header-own-booked {

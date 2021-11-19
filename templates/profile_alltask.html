@@ -6,7 +6,7 @@
     <div class="col-xl-9 mx-auto">
       <div class="cta-inner bg-faded rounded">
         <h2 class="section-heading mb-4">
-          <span class="section-heading-upper text-center">All available Tasks in the Database</span>
+          <span class="section-heading-upper text-center">All Tasks in the Database</span>
         </h2>
 
         <!-- Materialize Accordion to show the tasks from database through "for" cycle -->
@@ -16,24 +16,45 @@
           {% for task in tasks %}
           <li>
             {% if session.user|lower == task.created_by %}
-              <div id="collaps-header-own" class="collapsible-header">
-                  <div class="col">
-                    <i class="fas fa-angle-double-down"></i>
-                    <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
-                  </div>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="{{ url_for('edit_task', task_id=task._id ) }}" class="btn btn-success me-md-2 text-shadow"
-                      type="submit">Edit</a>
-                    <a href="{{ url_for('delete_task', task_id=task._id) }}" class="btn btn-danger text-shadow" type="button">Delete</a>
-                  </div>
-              </div>
-            {% else %}
-              <div id="collaps-header" class="collapsible-header">
-                <div class="col">
-                  <i class="fas fa-angle-double-down"></i>
-                  <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
+                <div id="collaps-header-own" class="collapsible-header">
+                    <div class="col">
+                      {% if task.is_booked %}                    
+                        <span class="btn btn-light">Help Showed Up</span>                  
+                      {% else %}                    
+                        <i class="fas fa-angle-double-down"></i>
+                        <strong>{{ task.task_name }}</strong> : {{ task.due_date }}                   
+                      {% endif %}
+                    </div>  
+                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('edit_task', task_id=task._id ) }}" class="btn btn-success me-md-2 text-shadow"
+                          type="submit">Edit</a>
+                        <a href="{{ url_for('delete_task', task_id=task._id) }}" class="btn btn-danger text-shadow" type="button">Delete</a>
+                      </div>
                 </div>
-              </div>
+            {% else %}
+              {% if task.is_booked %}
+                {% if session.user|lower == task.booked_by %}
+                  <div id="collaps-header" class="collapsible-header">
+                    <div class="col">
+                      <span class="btn btn-light">My application</span>
+                    </div>
+                  </div>
+                {% else %}
+                  <div id="collaps-header" class="collapsible-header">
+                    <div class="col">
+                      <i class="fas fa-angle-double-down"></i>
+                      <strong>{{ task.task_name }}</strong> : {{ task.due_date }} 
+                    </div>
+                  </div>  
+                {% endif %}
+                    
+              {% else %}
+                <div id="collaps-header-not-available" class="collapsible-header">
+                  <div class="col">
+                    <span class="btn btn-light">Not Available For You</span>
+                  </div>
+                </div>  
+              {% endif %}    
             {% endif %}
 
             <div id="collaps-body" class="collapsible-body">
@@ -61,37 +82,49 @@
                         <span>{{ task.created_by }}</span>
                       </li>
                     {% endif %}
-                    {% if booked_by %}
-                      <li class="section-heading-upper">Booked by User:
-                        <span>{{ task.booked_by }}</span>
-                      </li>
+                    {% if task.is_booked %}
+                      {% if session.user|lower != task.booked_by %}
+                        <li class="section-heading-upper">Booked by User:
+                          <span>{{ task.booked_by }}</span>
+                        </li>
+                      {% else %}
+                        <li class="section-heading-upper">This is my Task
+                        </li>
+                      {% endif %}
                     {% endif %}
                 </ul>
 
                 <div class="row">
                     {% if session.user|lower != task.created_by %}
                       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <!-- <div class="switch mb-3">
-                          <label for="is_booked">
-                            Apply for Task
-                            <input type="checkbox" id="is_booked" name="is_booked">
-                            <span class="lever"></span>
-                          </label>
-                        </div> -->
-                        <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
-                          class="btn btn-light me-md-2 text-shadow font-style-own" type="button">Apply for Task</a>
-                      </div>
+                        {% if task.is_booked %}
+                            {% if session.user|lower != task.booked_by %}
+                              <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
+                                class="btn btn-light me-md-2 text-shadow font-style-own" type="button">Apply for Task</a>
+                            {% else %}
+                              <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help requester: {{ task.created_by }} </span>
+                            {% endif %}  
+                        {% else %}
+                          <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
+                              class="btn btn-light me-md-2 text-shadow font-style-own" type="button" disabled>Apply for Task</a>
+                        {% endif %}
+                      </div>  
+                    {% else %}
+                      {% if task.is_booked %}
+                        <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help provider: {{ task.booked_by }} </span>
+                      {% endif %}
                     {% endif %}
                 </div>
             </div>
           </li>
           {% endfor %}
+
         </ul>
 
       </div>
     </div>
   </div>
-  </div>
+  
 </section>
 
 {% endblock %}
