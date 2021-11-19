@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -84,9 +84,9 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -125,11 +125,11 @@ def profile(username):
         {"username": session["user"]})["email"]
 
     if session["user"]:
-        return render_template("profile.html", 
-            username=username, fname=fname,
-            lname=lname, address_l1=address_l1, 
-            address_l2=address_l2, city=city, 
-            postcode=postcode, cell=cell, email=email)
+        return render_template("profile.html",
+                               username=username, fname=fname,
+                               lname=lname, address_l1=address_l1,
+                               address_l2=address_l2, city=city,
+                               postcode=postcode, cell=cell, email=email)
 
     return redirect(url_for("login"))
 
@@ -148,7 +148,7 @@ def new_task():
         is_car = "on" if request.form.get("is_car") else "off"
         is_outdoor = "on" if request.form.get("is_outdoor") else "off"
         is_heavy_lift = "on" if request.form.get("is_heavy_lift") else "off"
-        
+
         task = {
             "task_name": request.form.get("task_name"),
             "task_description": request.form.get("task_description"),
@@ -207,8 +207,10 @@ def edit_task(task_id):
 def apply_for_task(task_id):
     if request.method == "POST":
         is_car = "on" if request.form.get("car_needed") == "YES" else "off"
-        is_outdoor = "on" if request.form.get("outdoor_needed") == "YES" else "off"
-        is_heavy_lift = "on" if request.form.get("heavy_lift_needed") == "YES" else "off"
+        is_outdoor = "on" if request.form.get(
+            "outdoor_needed") == "YES" else "off"
+        is_heavy_lift = "on" if request.form.get(
+            "heavy_lift_needed") == "YES" else "off"
 
         submit = {
             "task_name": request.form.get("task_name"),
