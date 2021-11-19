@@ -25,6 +25,12 @@ def get_tasks():
     return render_template("profile_alltask.html", tasks=tasks)
 
 
+@app.route("/mytasks")
+def mytasks():
+    tasks = list(mongo.db.tasks.find())
+    return render_template("profile_mytasks.html", tasks=tasks)
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
