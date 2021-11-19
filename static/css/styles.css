@@ -11589,6 +11589,10 @@ form {
   background-color: #81c784;
 }
 
+.font-style-own {
+  font-family: inherit;
+}
+
 #collaps-body {
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.7);
@@ -11610,6 +11614,11 @@ form {
   margin-right: 2rem;
 }
 
+.collaps-header-own-booked {
+  background-color: #bdbdbd;
+  color: #efefef;
+}
+
 .pos {
   text-align:right;
 }
@@ -11621,4 +11630,28 @@ form {
 
 #btn-index-register a {
   height: auto;
+}
+
+.btn {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.btn-light {
+  background-color: #546e7a;
+  color: rgba(255, 255, 255, 1);
+  border-color: #546e7a;
+}
+
+#created_by,
+#outdoor_needed,
+#heavy_lift_needed,
+#car_needed {
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  border-radius: 2px;
+}
+
+#switches-result label {
+  font-size: 1rem;
+  color: #2e1810;
 }

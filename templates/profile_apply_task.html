@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-xl-9 mx-auto section-middle">
+        <div class="cta-inner bg-faded text-center rounded">
+            <h3 class="form-header">Apply for Task from {{ task.created_by }}</h3>
+            <hr>
+        <form method="POST" action="{{ url_for('apply_for_task', task_id=task._id) }}">
+
+                <!-- Task Name -->
+                <div class="row mb-3">
+                        <div class="col">
+                            <input id="task_name" placeholder="Task name" name="task_name" type="text" 
+                            value="{{ task.task_name }}" minlength="5" maxlength="40" class="form-control" readonly> 
+                            <label class="form-label" for="task_name">Give a name to your task</label>
+                        </div>
+                </div>
+
+                <!-- Task Description -->  
+                <div class="row mb-3">              
+                    <div class="col">
+                        <textarea id="task_description" placeholder="Task description" name="task_description" minlength="5"
+                        maxlength="200" class="form-control validate" readonly>
+                        {{- task.task_description -}} </textarea>
+                        <label class="form-label" for="task_description">Give a brief description about the task</label>
+                    </div>
+                </div>
+                
+                <!-- Compensation -->
+                <div class="row mb-3">
+                    <div class="col">
+                        <input id="compensation" placeholder="Compensation" name="compensation" type="text" 
+                        value="{{ task.compensation }}" class="form-control" readonly>
+                        <label for="compensation">What kind of compensation you can offer for the help (e.g free coffee/cake/lunch, some money etc ... )</label>
+                    </div>
+                </div>
+
+                <!-- Comment -->  
+                <div class="row mb-3">              
+                    <div class="col">
+                        <textarea id="comment" placeholder="Add extra comment" name="comment" minlength="5"
+                        maxlength="200" class="form-control validate" readonly>
+                        {{- task.comment -}} </textarea>
+                        <label class="form-label" for="comment">If you have any special need or just need more space for task description.</label>
+                    </div>
+                </div>               
+
+                <!-- Due Date picker from Materialize / Task duration -->
+                <div class="row mb-3 mx-auto">
+                    <div class="col-md-6">
+                            <input id="due_date" name="due_date" placeholder="Due date DD Month, YYYY" type="text" 
+                            value="{{ task.due_date }}" class="form-control" readonly>
+                            <label for="due_date">Date when you need the help</label>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <input id="duration" placeholder="Duration in hours" name="duration" type="number" 
+                        value="{{ task.duration }}" class="form-control" readonly>
+                        <label for="duration">How long is the task? (hours)</label>
+                    </div>
+                </div>
+
+
+                <!-- Result of Switches -->
+                <div id="switches-result" class="row mb-3">
+
+                    <div class="col-md-3 col-sm-6">
+                        <label for="car_needed">Car Needed?: </label>
+                        {% if task.is_car == "on" %}
+                            <input id="car_needed" name="car_needed" type="text" 
+                            value="YES" class="form-control" readonly>
+                        {% else %}
+                            <input id="car_needed" name="car_needed" type="text" 
+                            value="NO" class="form-control" readonly>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <label for="outdoor_needed">Outdoor Work Needed?: </label>
+                        {% if task.is_outdoor == "on" %}
+                            <input id="outdoor_needed" name="outdoor_needed" type="text" 
+                            value="YES" class="form-control" readonly>
+                        {% else %}
+                            <input id="outdoor_needed" name="outdoor_needed" type="text" 
+                            value="NO" class="form-control" readonly>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <label for="heavy_lift_needed">Heavy Weight Lift Needed?: </label>
+                        {% if task.is_heavy_lift == "on" %}
+                            <input id="heavy_lift_needed" name="heavy_lift_needed" type="text" 
+                            value="YES" class="form-control" readonly>
+                        {% else %}
+                            <input id="heavy_lift_needed" name="heavy_lift_needed" type="text" 
+                            value="NO" class="form-control" readonly>
+                        {% endif %}
+                    </div>
+            
+                    <div class="col-md-3 col-sm-6">
+                        <label for="created_by">Created By</label>
+                        <input id="created_by" placeholder="Duration in hours" name="created_by" type="text" 
+                        value="{{ task.created_by }}" class="form-control" readonly>
+                    </div>
+                </div>
+
+                <!-- Comment from Help Provider-->  
+                <div class="row mb-5">              
+                    <div class="col-md-6 mx-auto">
+                        <h4>Comment from you:</h4>
+                        <textarea id="comment_helper" name="comment_helper"
+                            maxlength="200" class="form-control validate">
+                            </textarea>
+                            <label class="form-label" for="comment_helper">If you have any question or comment to the help seeker, write here</label>
+                    </div>
+                </div>
+
+
+                <!-- Confirm and Cancel form button -->
+                <div class="row mb-5 mx-auto">
+                    <div class="col-md-6 mx-auto">
+                        <a href="{{ url_for('get_tasks') }}" class="btn btn-danger text-shadow">
+                            Cancel
+                        </a>
+                    </div>
+                    <div class="col-md-6 mx-auto">
+                        <button id="btn_register" type="submit" class="btn btn-success text-shadow">
+                            Apply
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        
+        </form>
+    
+        </div>
+    </div>
+    
+    
+
+{% endblock %}

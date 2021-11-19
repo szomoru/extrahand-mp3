@@ -184,12 +184,20 @@ def new_task():
             "is_car": is_car,
             "is_outdoor": is_outdoor,
             "is_heavy_lift": is_heavy_lift,
+            "is_booked": "off"
         }
         mongo.db.tasks.insert_one(task)
         flash("Task Successfully Added")
         return redirect(url_for("get_tasks"))
 
     return render_template("profile_new_task.html")
+
+
+@app.route("/delete_task/<task_id>")
+def delete_task(task_id):
+    mongo.db.tasks.remove({"_id": ObjectId(task_id)})
+    flash("Task Successfully Deleted")
+    return redirect(url_for("get_tasks"))
 
 
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
@@ -210,12 +218,42 @@ def edit_task(task_id):
             "is_car": is_car,
             "is_outdoor": is_outdoor,
             "is_heavy_lift": is_heavy_lift,
+            "is_booked": "off"
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Task Successfully Updated")
 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     return render_template("profile_edit_task.html", task=task)
+
+
+@app.route("/apply_for_task/<task_id>", methods=["GET", "POST"])
+def apply_for_task(task_id):
+    if request.method == "POST":
+        is_car = "on" if request.form.get("car_needed") == "YES" else "off"
+        is_outdoor = "on" if request.form.get("outdoor_needed") == "YES" else "off"
+        is_heavy_lift = "on" if request.form.get("heavy_lift_needed") == "YES" else "off"
+
+        submit = {
+            "task_name": request.form.get("task_name"),
+            "task_description": request.form.get("task_description"),
+            "compensation": request.form.get("compensation"),
+            "due_date": request.form.get("due_date"),
+            "duration": request.form.get("duration"),
+            "comment": request.form.get("comment"),
+            "created_by": request.form.get("created_by"),
+            "is_car": is_car,
+            "is_outdoor": is_outdoor,
+            "is_heavy_lift": is_heavy_lift,
+            "is_booked": "on",
+            "booked_by": session["user"],
+            "comment_helper": request.form.get("comment_helper")
+        }
+        mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
+        flash("Applied Successfully")
+
+    task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    return render_template("profile_apply_task.html", task=task)
 
 
 @app.route("/about")
