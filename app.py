@@ -100,7 +100,6 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/")
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -133,29 +132,6 @@ def profile(username):
             postcode=postcode, cell=cell, email=email)
 
     return redirect(url_for("login"))
-
-
-@app.route("/edit_profile/<user_id>", methods=["GET", "POST"])
-def edit_profile(user_id):
-    if request.method == "POST":
-        submit = {
-            "username": request.form.get("username"),
-            "fname": request.form.get("fname"),
-            "lname": request.form.get("lname"),
-            "address_l1": request.form.get("address_l1"),
-            "address_l2": request.form.get("address_l2"),
-            "city": request.form.get("city"),
-            "postcode": request.form.get("postcode"),
-            "cell": request.form.get("cell"),
-            "email": request.form.get("email")
-        }
-
-        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
-        flash("User Successfully Updated")
-
-    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-    
-    return render_template("profile_edit_profile.html", user=user)
 
 
 @app.route("/logout")
