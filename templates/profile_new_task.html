@@ -6,66 +6,70 @@
         <div class="cta-inner bg-faded text-center rounded">
             <h3 class="form-header">Register New Task <i class="fas fa-folder-plus"></i></h3>
             <hr>
-        <form method="POST" action="{{ url_for('new_task') }}">
+            <form method="POST" action="{{ url_for('new_task') }}">
 
                 <!-- Task Name -->
                 <div class="row mb-3">
-                        <div class="col">
-                            <input id="task_name" placeholder="Task name" name="task_name" type="text" 
-                            minlength="5" maxlength="40" class="form-control" required> 
-                            <label class="form-label" for="task_name">Give a name to your task</label>
-                        </div>
+                    <div class="col">
+                        <input id="task_name" placeholder="Task name" name="task_name" type="text" minlength="5"
+                            maxlength="40" class="form-control" required>
+                        <label class="form-label" for="task_name">Give a name to your task</label>
+                    </div>
                 </div>
 
-                <!-- Task Description -->  
-                <div class="row mb-3">              
+                <!-- Task Description -->
+                <div class="row mb-3">
                     <div class="col">
-                        <textarea id="task_description" placeholder="Task description" name="task_description" minlength="5"
-                        maxlength="200" class="form-control validate" required></textarea>
+                        <textarea id="task_description" placeholder="Task description" name="task_description"
+                            minlength="5" maxlength="200" class="form-control validate" required></textarea>
                         <label class="form-label" for="task_description">Give a brief description about the task</label>
                     </div>
                 </div>
-                
+
                 <!-- Compensation -->
                 <div class="row mb-3">
                     <div class="col">
-                        <input id="compensation" placeholder="Compensation" name="compensation" type="text" class="form-control" required>
-                        <label for="compensation">What kind of compensation you can offer for the help (e.g free coffee/cake/lunch, some money etc ... )</label>
+                        <input id="compensation" placeholder="Compensation" name="compensation" type="text"
+                            class="form-control" required>
+                        <label for="compensation">What kind of compensation you can offer for the help (e.g free
+                            coffee/cake/lunch, some money etc ... )</label>
                     </div>
                 </div>
 
-                <!-- Comment -->  
-                <div class="row mb-3">              
+                <!-- Comment -->
+                <div class="row mb-3">
                     <div class="col">
                         <textarea id="comment" placeholder="Add extra comment" name="comment" minlength="5"
-                        maxlength="200" class="form-control validate"></textarea>
-                        <label class="form-label" for="comment">If you have any special need or just need more space for task description.</label>
+                            maxlength="200" class="form-control validate"></textarea>
+                        <label class="form-label" for="comment">If you have any special need or just need more space for
+                            task description.</label>
                     </div>
-                </div>               
+                </div>
 
                 <!-- Due Date picker from Materialize / Task duration -->
                 <div class="row mb-3 mx-auto">
                     <div class="col-md-6">
-                            <input id="due_date" name="due_date" placeholder="Due date DD Month, YYYY" type="text" class="datepicker validate" required>
-                            <label for="due_date">Date when you need the help</label>
+                        <input id="due_date" name="due_date" placeholder="Due date DD Month, YYYY" type="text"
+                            class="datepicker validate" required>
+                        <label for="due_date">Date when you need the help</label>
                     </div>
-                
+
                     <div class="col-md-6">
-                        <input id="duration" placeholder="Duration in hours" name="duration" type="number" class="form-control" required>
+                        <input id="duration" placeholder="Duration in hours" name="duration" type="number"
+                            class="form-control" required>
                         <label for="duration">How long is the task? (hours)</label>
                     </div>
                 </div>
-
 
                 <!-- Switches -->
                 <div id="switches" class="row mb-5 mx-auto">
 
                     <div class="col-md-4">
                         <div class="switch mb-3">
-                            <label for="is_car"> 
-                            <input type="checkbox" id="is_car" name="is_car">
-                            <span class="lever"></span>
-                            Possibly car needed
+                            <label for="is_car">
+                                <input type="checkbox" id="is_car" name="is_car">
+                                <span class="lever"></span>
+                                Possibly car needed
                             </label>
                         </div>
                     </div>
@@ -73,9 +77,9 @@
                     <div class="col-md-4">
                         <div class="switch mb-3">
                             <label for="is_outdoor">
-                            <input type="checkbox" id="is_outdoor" name="is_outdoor">
-                            <span class="lever"></span>
-                            Some part of the tsk is outdoor
+                                <input type="checkbox" id="is_outdoor" name="is_outdoor">
+                                <span class="lever"></span>
+                                Some part of the tsk is outdoor
                             </label>
                         </div>
                     </div>
@@ -89,7 +93,6 @@
                             </label>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -106,15 +109,9 @@
                         </button>
                     </div>
                 </div>
-
-
             </div>
-        
         </form>
-    
-        </div>
     </div>
-    
-    
+</div>
 
 {% endblock %}

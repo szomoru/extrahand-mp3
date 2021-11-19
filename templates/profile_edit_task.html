@@ -6,57 +6,59 @@
         <div class="cta-inner bg-faded text-center rounded">
             <h3 class="form-header">Edit Existing Task</h3>
             <hr>
-        <form method="POST" action="{{ url_for('edit_task', task_id=task._id) }}">
+            <form method="POST" action="{{ url_for('edit_task', task_id=task._id) }}">
 
                 <!-- Task Name -->
                 <div class="row mb-3">
-                        <div class="col">
-                            <input id="task_name" placeholder="Task name" name="task_name" type="text" 
-                            value="{{ task.task_name }}" minlength="5" maxlength="40" class="form-control" required> 
-                            <label class="form-label" for="task_name">Give a name to your task</label>
-                        </div>
+                    <div class="col">
+                        <input id="task_name" placeholder="Task name" name="task_name" type="text"
+                            value="{{ task.task_name }}" minlength="5" maxlength="40" class="form-control" required>
+                        <label class="form-label" for="task_name">Give a name to your task</label>
+                    </div>
                 </div>
 
-                <!-- Task Description -->  
-                <div class="row mb-3">              
+                <!-- Task Description -->
+                <div class="row mb-3">
                     <div class="col">
-                        <textarea id="task_description" placeholder="Task description" name="task_description" minlength="5"
-                        maxlength="200" class="form-control validate" required>
+                        <textarea id="task_description" placeholder="Task description" name="task_description"
+                            minlength="5" maxlength="200" class="form-control validate" required>
                         {{- task.task_description -}} </textarea>
                         <label class="form-label" for="task_description">Give a brief description about the task</label>
                     </div>
                 </div>
-                
+
                 <!-- Compensation -->
                 <div class="row mb-3">
                     <div class="col">
-                        <input id="compensation" placeholder="Compensation" name="compensation" type="text" 
-                        value="{{ task.compensation }}" class="form-control" required>
-                        <label for="compensation">What kind of compensation you can offer for the help (e.g free coffee/cake/lunch, some money etc ... )</label>
+                        <input id="compensation" placeholder="Compensation" name="compensation" type="text"
+                            value="{{ task.compensation }}" class="form-control" required>
+                        <label for="compensation">What kind of compensation you can offer for the help (e.g free
+                            coffee/cake/lunch, some money etc ... )</label>
                     </div>
                 </div>
 
-                <!-- Comment -->  
-                <div class="row mb-3">              
+                <!-- Comment -->
+                <div class="row mb-3">
                     <div class="col">
                         <textarea id="comment" placeholder="Add extra comment" name="comment" minlength="5"
-                        maxlength="200" class="form-control validate">
+                            maxlength="200" class="form-control validate">
                         {{- task.comment -}}</textarea>
-                        <label class="form-label" for="comment">If you have any special need or just need more space for task description.</label>
+                        <label class="form-label" for="comment">If you have any special need or just need more space for
+                            task description.</label>
                     </div>
-                </div>               
+                </div>
 
                 <!-- Due Date picker from Materialize / Task duration -->
                 <div class="row mb-3 mx-auto">
                     <div class="col-md-6">
-                            <input id="due_date" name="due_date" placeholder="Due date DD Month, YYYY" type="text" 
+                        <input id="due_date" name="due_date" placeholder="Due date DD Month, YYYY" type="text"
                             value="{{ task.due_date }}" class="datepicker validate" required>
-                            <label for="due_date">Date when you need the help</label>
+                        <label for="due_date">Date when you need the help</label>
                     </div>
-                
+
                     <div class="col-md-6">
-                        <input id="duration" placeholder="Duration in hours" name="duration" type="number" 
-                        value="{{ task.duration }}" class="form-control" required>
+                        <input id="duration" placeholder="Duration in hours" name="duration" type="number"
+                            value="{{ task.duration }}" class="form-control" required>
                         <label for="duration">How long is the task? (hours)</label>
                     </div>
                 </div>
@@ -67,14 +69,14 @@
 
                     <div class="col-md-4">
                         <div class="switch mb-3">
-                            <label for="is_car"> 
-                            {% if task.is_car == "on" %}
-                                <input type="checkbox" id="is_car" name="is_car" checked>
-                            {% else %}
-                                <input type="checkbox" id="is_car" name="is_car">
-                            {% endif %}
-                            <span class="lever"></span>
-                            Possibly car needed
+                            <label for="is_car">
+                                {% if task.is_car == "on" %}
+                                    <input type="checkbox" id="is_car" name="is_car" checked>
+                                {% else %}
+                                    <input type="checkbox" id="is_car" name="is_car">
+                                {% endif %}
+                                    <span class="lever"></span>
+                                    Possibly car needed
                             </label>
                         </div>
                     </div>
@@ -82,13 +84,13 @@
                     <div class="col-md-4">
                         <div class="switch mb-3">
                             <label for="is_outdoor">
-                            {% if task.is_outdoor == "on" %}
-                                <input type="checkbox" id="is_outdoor" name="is_outdoor" checked>
-                            {% else %}
-                                <input type="checkbox" id="is_outdoor" name="is_car">
-                            {% endif %}
-                            <span class="lever"></span>
-                            Some part of the task is outdoor
+                                {% if task.is_outdoor == "on" %}
+                                    <input type="checkbox" id="is_outdoor" name="is_outdoor" checked>
+                                {% else %}
+                                    <input type="checkbox" id="is_outdoor" name="is_car">
+                                {% endif %}
+                                    <span class="lever"></span>
+                                    Some part of the task is outdoor
                             </label>
                         </div>
                     </div>
@@ -101,12 +103,11 @@
                                 {% else %}
                                     <input type="checkbox" id="is_heavy_lift" name="is_heavy_lift">
                                 {% endif %}
-                                <span class="lever"></span>
-                                Task can contain heavy lifting tasks
+                                    <span class="lever"></span>
+                                    Task can contain heavy lifting tasks
                             </label>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -125,13 +126,13 @@
                 </div>
 
 
-            </div>
-        
-        </form>
-    
         </div>
+
+        </form>
+
     </div>
-    
-    
+</div>
+
+
 
 {% endblock %}

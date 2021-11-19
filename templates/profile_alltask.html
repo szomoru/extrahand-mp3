@@ -16,21 +16,22 @@
           {% for task in tasks %}
           <li>
             {% if session.user|lower == task.created_by %}
-                <div id="collaps-header-own" class="collapsible-header">
-                    <div class="col">
-                      {% if task.is_booked %}                    
-                        <span class="btn btn-light">Help Showed Up</span>                  
-                      {% else %}                    
-                        <i class="fas fa-angle-double-down"></i>
-                        <strong>{{ task.task_name }}</strong> : {{ task.due_date }}                   
-                      {% endif %}
-                    </div>  
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="{{ url_for('edit_task', task_id=task._id ) }}" class="btn btn-success me-md-2 text-shadow"
-                          type="submit">Edit</a>
-                        <a href="{{ url_for('delete_task', task_id=task._id) }}" class="btn btn-danger text-shadow" type="button">Delete</a>
-                      </div>
+              <div id="collaps-header-own" class="collapsible-header">
+                <div class="col">
+                  {% if task.is_booked %}
+                  <span class="btn btn-light">Help Showed Up</span>
+                  {% else %}
+                  <i class="fas fa-angle-double-down"></i>
+                  <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
+                  {% endif %}
                 </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <a href="{{ url_for('edit_task', task_id=task._id ) }}" class="btn btn-success me-md-2 text-shadow"
+                    type="submit">Edit</a>
+                  <a href="{{ url_for('delete_task', task_id=task._id) }}" class="btn btn-danger text-shadow"
+                    type="button">Delete</a>
+                </div>
+              </div>
             {% else %}
               {% if task.is_booked %}
                 {% if session.user|lower == task.booked_by %}
@@ -43,88 +44,88 @@
                   <div id="collaps-header" class="collapsible-header">
                     <div class="col">
                       <i class="fas fa-angle-double-down"></i>
-                      <strong>{{ task.task_name }}</strong> : {{ task.due_date }} 
+                      <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
                     </div>
-                  </div>  
+                  </div>
                 {% endif %}
-                    
+
               {% else %}
                 <div id="collaps-header-not-available" class="collapsible-header">
                   <div class="col">
                     <span class="btn btn-light">Not Available For You</span>
                   </div>
-                </div>  
-              {% endif %}    
+                </div>
+              {% endif %}
             {% endif %}
 
             <div id="collaps-body" class="collapsible-body">
-                <ul class="mb-3">
-                    <li class="section-heading-upper">Task Name:
-                      <span>{{ task.task_name }}</span>
+              <ul class="mb-3">
+                <li class="section-heading-upper">Task Name:
+                  <span>{{ task.task_name }}</span>
+                </li>
+                <li class="section-heading-upper">Task Description:
+                  <span>{{ task.task_description }}</span>
+                </li>
+                <li class="section-heading-upper">Additional Comment:
+                  <span>{{ task.comment }}</span>
+                </li>
+                <li class="section-heading-upper">Compensation:
+                  <span>{{ task.compensation }}</span>
+                </li>
+                <li class="section-heading-upper">Date of Task:
+                  <span>{{ task.due_date }}</span>
+                </li>
+                <li class="section-heading-upper">Duration of the Task:
+                  <span>{{ task.duration }}</span>
+                </li>
+                {% if session.user|lower != task.created_by %}
+                  <li class="section-heading-upper">Created by:
+                    <span>{{ task.created_by }}</span>
+                  </li>
+                {% endif %}
+                  {% if task.is_booked %}
+                    {% if session.user|lower != task.booked_by %}
+                    <li class="section-heading-upper">Booked by User:
+                      <span>{{ task.booked_by }}</span>
                     </li>
-                    <li class="section-heading-upper">Task Description:
-                      <span>{{ task.task_description }}</span>
-                    </li>
-                    <li class="section-heading-upper">Additional Comment:
-                      <span>{{ task.comment }}</span>
-                    </li>
-                    <li class="section-heading-upper">Compensation:
-                      <span>{{ task.compensation }}</span>
-                    </li>
-                    <li class="section-heading-upper">Date of Task:
-                      <span>{{ task.due_date }}</span>
-                    </li>
-                    <li class="section-heading-upper">Duration of the Task:
-                      <span>{{ task.duration }}</span>
-                    </li>
-                    {% if session.user|lower != task.created_by %}
-                      <li class="section-heading-upper">Created by:
-                        <span>{{ task.created_by }}</span>
+                    {% else %}
+                      <li class="section-heading-upper">This is my Task
                       </li>
                     {% endif %}
+                  {% endif %}
+              </ul>
+
+              <div class="row">
+                {% if session.user|lower != task.created_by %}
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     {% if task.is_booked %}
                       {% if session.user|lower != task.booked_by %}
-                        <li class="section-heading-upper">Booked by User:
-                          <span>{{ task.booked_by }}</span>
-                        </li>
+                        <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
+                          class="btn btn-light me-md-2 text-shadow font-style-own" type="button">Apply for Task</a>
                       {% else %}
-                        <li class="section-heading-upper">This is my Task
-                        </li>
+                        <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help requester:
+                          {{ task.created_by }} </span>
                       {% endif %}
-                    {% endif %}
-                </ul>
-
-                <div class="row">
-                    {% if session.user|lower != task.created_by %}
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        {% if task.is_booked %}
-                            {% if session.user|lower != task.booked_by %}
-                              <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
-                                class="btn btn-light me-md-2 text-shadow font-style-own" type="button">Apply for Task</a>
-                            {% else %}
-                              <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help requester: {{ task.created_by }} </span>
-                            {% endif %}  
-                        {% else %}
-                          <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
-                              class="btn btn-light me-md-2 text-shadow font-style-own" type="button" disabled>Apply for Task</a>
-                        {% endif %}
-                      </div>  
                     {% else %}
-                      {% if task.is_booked %}
-                        <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help provider: {{ task.booked_by }} </span>
-                      {% endif %}
+                      <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
+                        class="btn btn-light me-md-2 text-shadow font-style-own" type="button" disabled>Apply for Task</a>
                     {% endif %}
-                </div>
+                  </div>
+                {% else %}
+                  {% if task.is_booked %}
+                    <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help provider:
+                      {{ task.booked_by }} </span>
+                  {% endif %}
+                {% endif %}
+              </div>
             </div>
           </li>
           {% endfor %}
-
         </ul>
-
       </div>
     </div>
   </div>
-  
+
 </section>
 
 {% endblock %}

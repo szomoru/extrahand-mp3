@@ -1,44 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <section class="page-section clearfix">
-            <div class="container">
-                <div class="intro">
-                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/static/assets/img/intro.jpg" alt="..." />
-                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper"><i><strong>"I need help"</i></strong></span>
-                        </h2>
-                        <p class="mb-3">There are people who needs help in a certain period of their life ...</p>
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-upper"><i><strong>"I provide help"</strong></i></span>
-                        </h2>                        
-                        <p class="mb-3">There are people who eager to help others in a certain period of their life ...</p>
-                        <h2 class="section-heading mb-4">If you are any of them</h2>
-                        <div id="btn-index-register" class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="{{ url_for('register') }}">Register Today!</a></div>
-                    </div>
-                </div>
+<section class="page-section clearfix">
+    <div class="container">
+        <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/static/assets/img/intro.jpg" alt="..." />
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper"><i><strong>"I need help"</i></strong></span>
+                </h2>
+                <p class="mb-3">There are people who needs help in a certain period of their life ...</p>
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper"><i><strong>"I provide help"</strong></i></span>
+                </h2>
+                <p class="mb-3">There are people who eager to help others in a certain period of their life ...</p>
+                <h2 class="section-heading mb-4">If you are any of them</h2>
+                <div id="btn-index-register" class="intro-button mx-auto"><a class="btn btn-primary btn-xl"
+                        href="{{ url_for('register') }}">Register Today!</a></div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section class="page-section cta col-xl-9 mx-auto rounded">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-9 mx-auto">
-                        <div class="cta-inner bg-faded text-center rounded">
-                            <h2 class="section-heading mb-4">
-                                <span class="section-heading-upper">Available Tasks for registered members</span>
-                            </h2>
-                            {% for task in tasks %}
-                                    <div class="container_tasks">
-                                        <span class="section-heading-upper"><strong>Task Name: </strong></span> {{ task.task_name }}<br>
-                                        <span class="section-heading-upper"><strong>Task Description: </strong></span>{{ task.task_description }}<br>
-                                    </div>    
-                            {% endfor %}                                                 
+<section class="page-section cta col-xl-9 mx-auto rounded">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Available Tasks for registered members</span>
+                    </h2>
+                    {% for task in tasks %}
+                        <div class="container_tasks">
+                            <span class="section-heading-upper"><strong>Task Name: </strong></span> {{ task.task_name }}<br>
+                            <span class="section-heading-upper"><strong>Task Description:
+                                </strong></span>{{ task.task_description }}<br>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

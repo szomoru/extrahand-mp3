@@ -8,30 +8,34 @@
 
         <div class="row">
             <form class="col-4 mx-auto" method="POST" action="{{ url_for('login') }}">
-                
-                    <!-- Username -->
-                    <div class="row mb-3">
-                        <div>
-                            <i class="fas fa-user-cog"></i>
-                            <input id="username" name="username" type="text" minlength="5" maxlength="15"
-                                pattern="^[a-zA-Z0-9]{5,15}$" class="validate" placeholder="Username" aria-label="username" required>
-                        </div>
+
+                <!-- Username -->
+                <div class="row mb-3">
+                    <div>
+                        <i class="fas fa-user-cog"></i>
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9]{5,15}$" class="validate" placeholder="Username" aria-label="username"
+                            required>
                     </div>
-                    <!-- Password -->
-                    <div class="row mb-5">
-                        <div>
-                            <i class="fas fa-user-lock"></i>
-                            <input id="password" name="password" type="password" minlength="5" maxlength="15"
-                                pattern="^[a-zA-Z0-9]{5,15}$" class="validate" placeholder="Password" aria-label="password" required>
-                        </div>
+                </div>
+
+                <!-- Password -->
+                <div class="row mb-5">
+                    <div>
+                        <i class="fas fa-user-lock"></i>
+                        <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9]{5,15}$" class="validate" placeholder="Password" aria-label="password"
+                            required>
                     </div>
-                    <!-- Log In -->
-                    <div class="row btn-row mb-5">
-                        <button type="submit" class="btn btn-success text-shadow">
-                            Log In <i class="fas fa-sign-in-alt"></i>
-                        </button>
-                    </div>
-                
+                </div>
+
+                <!-- Log In -->
+                <div class="row btn-row mb-5">
+                    <button type="submit" class="btn btn-success text-shadow">
+                        Log In <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </div>
+
             </form>
         </div>
 
@@ -39,7 +43,6 @@
             <p>
                 New Here? <a href="{{ url_for('register') }}">Register Account</a>
             </p>
-
         </div>
 
     </div>
