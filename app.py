@@ -50,8 +50,6 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
-        is_help = "on" if request.form.get("is_help") else "off"
-
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
@@ -102,6 +100,7 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/")
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -136,8 +135,8 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-@app.route("/edit_profile/<profile_id>", methods=["GET", "POST"])
-def edit_profile():
+@app.route("/edit_profile/<user_id>", methods=["GET", "POST"])
+def edit_profile(user_id):
     if request.method == "POST":
         submit = {
             "username": request.form.get("username"),
@@ -148,14 +147,15 @@ def edit_profile():
             "city": request.form.get("city"),
             "postcode": request.form.get("postcode"),
             "cell": request.form.get("cell"),
-            "email": request.form.get["email"]
+            "email": request.form.get("email")
         }
-        mongo.db.users.update({"_id": ObjectId(profile_id)}, submit)
-        flash("Task Successfully Updated")
 
-    user = mongo.db.users.find_one({"_id": ObjectId(profile_id)})
+        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+        flash("User Successfully Updated")
+
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
     
-    return render_template("profile.html", user=user)
+    return render_template("profile_edit_profile.html", user=user)
 
 
 @app.route("/logout")

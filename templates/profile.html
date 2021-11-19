@@ -14,15 +14,15 @@
 
 </section>
 
-<section class="page-section about-heading">
+<section class="page-section cta col-xl-9 mx-auto rounded">
   <div class="container">
     <div class="col-xl-9 mx-auto">
       <div class="cta-inner bg-faded text-center rounded">
-        <h2 class="section-heading mb-3">
+        <h2 class="section-heading mb-4">
           <span class="section-heading-upper">Your Registered Personal Data</span>
         </h2>
 
-        <div class="container_tasks">
+        <div class="container_tasks mb-3">
           <span class="section-heading-upper mb-3"><strong>Username: </strong></span> {{ username }}<br>
           <span class="section-heading-upper mb-3"><strong>First name: </strong></span>{{ fname }}<br>
           <span class="section-heading-upper mb-3"><strong>Last name: </strong></span>{{ lname }}<br>
@@ -33,7 +33,16 @@
           <span class="section-heading-upper mb-3"><strong>Phone number: </strong></span>{{ cell }}<br>
           <span class="section-heading-upper mb-3"><strong>E-mail address: </strong></span>{{ email }}<br>
         </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="{{ url_for('edit_profile', user_id=user._id) }}" class="btn btn-success me-md-2 text-shadow"
+            type="submit">Edit Profile</a>
+        </div>
+
       </div>
+
+
+
     </div>
   </div>
 </section>
