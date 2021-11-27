@@ -22,25 +22,31 @@
     </div>
 </section>
 
-<section class="page-section cta col-xl-9 mx-auto rounded">
-    <div class="container">
+<section class="page-section cta rounded">
+    
         <div class="row">
-            <div class="col-xl-9 mx-auto">
+            <div class="col">
                 <div class="cta-inner bg-faded text-center rounded">
                     <h2 class="section-heading mb-4">
                         <span class="section-heading-upper">Available Tasks for registered members</span>
                     </h2>
-                    {% for task in tasks %}
-                        <div class="container_tasks">
-                            <span class="section-heading-upper"><strong>Task Name: </strong></span> {{ task.task_name }}<br>
-                            <span class="section-heading-upper"><strong>Task Description:
-                                </strong></span>{{ task.task_description }}<br>
-                        </div>
-                    {% endfor %}
+                    <div class="row AllTaskList  mx-auto">
+                        
+                        {% for task in tasks %}
+                        
+                                <div class="container_tasks">
+                                    <span class="section-heading-upper"><strong>Task Name: </strong></span> {{ task.task_name }}<br>
+                                    <span class="section-heading-upper"><strong>Task Description:
+                                        </strong></span>{{ task.task_description }}<br>
+                                </div>
+                    
+                        {% endfor %}
+                    
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 </section>
 
 {% endblock %}

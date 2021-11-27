@@ -48,16 +48,22 @@
 
                 <!-- Due Date picker from Materialize / Task duration -->
                 <div class="row mb-3 mx-auto">
-                    <div class="col-md-6">
-                        <input id="due_date" name="due_date" placeholder="Due date DD Month, YYYY" type="text"
-                            class="datepicker validate" required>
+                    <div class="col-md-4">
+                        <input id="due_date" name="due_date" placeholder="Due date /DD Month, YYYY/" type="text"
+                            class="datepicker" required>
                         <label for="due_date">Date when you need the help</label>
                     </div>
 
-                    <div class="col-md-6">
-                        <input id="duration" placeholder="Duration in hours" name="duration" type="number"
+                    <div class="col-md-4">
+                        <input id="duration" placeholder="Duration in hours" min="0.5" step="0.5" name="duration" type="number"
                             class="form-control" required>
                         <label for="duration">How long is the task? (hours)</label>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input id="bestcontact_requester" placeholder="My Best Contact" name="bestcontact_requester" type="text"
+                            class="form-control validate" required>
+                        <label for="bestcontact_requester">Give your best contact where the helper can contact you</label>
                     </div>
                 </div>
 

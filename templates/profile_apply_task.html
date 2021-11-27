@@ -11,7 +11,7 @@
                 <!-- Task Name -->
                 <div class="row mb-3">
                     <div class="col">
-                        <input id="task_name" placeholder="Task name" name="task_name" type="text"
+                        <input id="task_name" placeholder="Task name" name="task_name" type="password"
                             value="{{ task.task_name }}" minlength="5" maxlength="40" class="form-control" readonly>
                         <label class="form-label" for="task_name">Give a name to your task</label>
                     </div>
@@ -31,7 +31,7 @@
                 <div class="row mb-3">
                     <div class="col">
                         <input id="compensation" placeholder="Compensation" name="compensation" type="text"
-                            value="{{ task.compensation }}" class="form-control" readonly>
+                            value="{{ email }}" class="form-control" readonly>
                         <label for="compensation">What kind of compensation you can offer for the help (e.g free
                             coffee/cake/lunch, some money etc ... )</label>
                     </div>
@@ -105,15 +105,13 @@
                     </div>
                 </div>
 
-                <!-- Comment from Help Provider-->
+                <!-- Best Contact from Help Provider-->
                 <div class="row mb-5">
                     <div class="col-md-6 mx-auto">
-                        <h4>Comment from you:</h4>
-                        <textarea id="comment_helper" name="comment_helper" maxlength="200"
-                            class="form-control validate">
-                            </textarea>
-                        <label class="form-label" for="comment_helper">If you have any question or comment to the help
-                            seeker, write here</label>
+                        <h4>Best contac from you:</h4>
+                        <input id="bestcontact_provider" placeholder="My Best Contact" name="bestcontact_provider" type="text"
+                        class="form-control validate" required>
+                        <label for="bestcontact_provider">Give your best contact where the help requester can contact you</label>
                     </div>
                 </div>
 
@@ -131,7 +129,6 @@
                         </button>
                     </div>
                 </div>
-            /div>
         </form>
     </div>
 </div>

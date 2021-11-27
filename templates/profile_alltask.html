@@ -19,7 +19,9 @@
               <div id="collaps-header-own" class="collapsible-header">
                 <div class="col">
                   {% if task.is_booked %}
-                  <span class="btn btn-light">Help Showed Up</span>
+                  <i class="fas fa-angle-double-down"></i>
+                  <span class="btn btn-warning"><strong>Help Showed Up</strong></span>
+                  <span class="justify-content-md-end"><strong>{{ task.task_name }}</strong> : {{ task.due_date }}</span> 
                   {% else %}
                   <i class="fas fa-angle-double-down"></i>
                   <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
@@ -37,7 +39,9 @@
                 {% if session.user|lower == task.booked_by %}
                   <div id="collaps-header" class="collapsible-header">
                     <div class="col">
-                      <span class="btn btn-light">My application</span>
+                      <i class="fas fa-angle-double-down"></i>
+                      <span class="btn btn-info"><strong>I have Applied</strong></span>
+                      <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
                     </div>
                   </div>
                 {% else %}
@@ -52,7 +56,9 @@
               {% else %}
                 <div id="collaps-header-not-available" class="collapsible-header">
                   <div class="col">
-                    <span class="btn btn-light">Not Available For You</span>
+                    <i class="fas fa-angle-double-down"></i>
+                    <span class="btn btn-light"><strong>Not Available For Me</strong></span>
+                    <strong>{{ task.task_name }}</strong> : {{ task.due_date }}
                   </div>
                 </div>
               {% endif %}
@@ -97,24 +103,24 @@
 
               <div class="row">
                 {% if session.user|lower != task.created_by %}
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  
                     {% if task.is_booked %}
                       {% if session.user|lower != task.booked_by %}
                         <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
                           class="btn btn-light me-md-2 text-shadow font-style-own" type="button">Apply for Task</a>
                       {% else %}
-                        <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help requester:
-                          {{ task.created_by }} </span>
+                        <span class="info-btn-height btn btn-light me-md-2 text-shadow font-style-own">Contact of help requester: 
+                                 {{ tasks.bestcontact_requester }} </span>
                       {% endif %}
                     {% else %}
                       <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
                         class="btn btn-light me-md-2 text-shadow font-style-own" type="button" disabled>Apply for Task</a>
                     {% endif %}
-                  </div>
+                  
                 {% else %}
                   {% if task.is_booked %}
-                    <span class="btn btn-light me-md-2 text-shadow font-style-own">Contact of help provider:
-                      {{ task.booked_by }} </span>
+                    <span class="info-btn-height btn btn-light me-md-2 text-shadow font-style-own">Contact of help provider:
+                      {{ task.bestcontact_provider }} </span>
                   {% endif %}
                 {% endif %}
               </div>

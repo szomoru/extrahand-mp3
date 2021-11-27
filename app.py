@@ -31,6 +31,12 @@ def mytasks():
     return render_template("profile_mytasks.html", tasks=tasks)
 
 
+@app.route("/get_users")
+def get_users():
+    users = list(mongo.db.users.find())
+    return render_template("profile_alltask.html", users=users)
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -166,11 +172,12 @@ def new_task():
             "is_car": is_car,
             "is_outdoor": is_outdoor,
             "is_heavy_lift": is_heavy_lift,
+            "bestcontact_requester": request.form.get("bestcontact_requester"),
             "is_booked": "off"
         }
         mongo.db.tasks.insert_one(task)
         flash("Task Successfully Added")
-        return redirect(url_for("get_tasks"))
+        return redirect(url_for("new_task"))
 
     return render_template("profile_new_task.html")
 
@@ -231,7 +238,7 @@ def apply_for_task(task_id):
             "is_heavy_lift": is_heavy_lift,
             "is_booked": "on",
             "booked_by": session["user"],
-            "comment_helper": request.form.get("comment_helper")
+            "bestcontact_provider": request.form.get("bestcontact_provider")
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Applied Successfully")
