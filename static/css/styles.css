@@ -11697,6 +11697,7 @@ form {
 }
 
 
+
 /* ---------- Contact Form styling - START ----------*/
 
 .center-form {
@@ -11719,11 +11720,7 @@ i {
   justify-content: space-evenly;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-.main-section h3 {
-  margin: 2rem;
-  color: #ab000d;
+  margin-bottom: 5rem;
 }
 
 #contact_form {
@@ -11744,6 +11741,10 @@ i {
   margin-bottom: 1.5rem;
   border: 2px solid #f57f17;
   background-color: #e0e0e0;
+}
+
+#mailform textarea {
+  height: 20rem;
 }
 
 /* ---------- Contact Form styling - END ----------*/
