@@ -11695,3 +11695,99 @@ form {
 .info-btn-height {
   height: fit-content;
 }
+
+
+/* ---------- Contact Form styling - START ----------*/
+
+.center-form {
+  margin: 0;
+  padding: 50px;
+  text-align: right;
+}
+
+.center-form h1,
+i {
+  color: #f57f17;
+}
+
+.btn-form {
+  margin-top: 2rem;
+}
+
+.contact-section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.main-section h3 {
+  margin: 2rem;
+  color: #ab000d;
+}
+
+#contact_form {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#contact_form .btn {
+  background-color: #f57f17;
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+#contact_form div {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  margin-bottom: 1.5rem;
+  border: 2px solid #f57f17;
+  background-color: #e0e0e0;
+}
+
+/* ---------- Contact Form styling - END ----------*/
+
+/* ---------- Social network styling - START ----------*/
+
+.social-network-container {
+  display: flex;
+  height: 100%;
+  justify-content: right;
+  align-items: center;
+  padding: 0;
+}
+
+.social-networks {
+  width: 100%;
+}
+
+.social-networks li {
+  display: inline;
+}
+
+.social-networks i {
+  font-size: 200%;
+  margin: 0.5%;
+  padding: 1%;
+  color: #f57f17;
+}
+
+/* ---------- Social network styling - END ----------*/
+
+
+/* ----- HOVER STYLING - START -----*/
+
+.social-networks i:hover {
+  color: #ab000d;
+  transform: scale(1.2);
+  transition: all 0.25s ease-in-out;
+}
+
+#contact_form .btn:hover {
+  transform: scale(1.2);
+  transition: all 0.25s ease-in-out;
+  background-color: #ab000d;
+}
+
+/* ----- HOVER STYLING - END -----*/

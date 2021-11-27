@@ -46,8 +46,12 @@ def search():
 
 @app.route("/home")
 def home():
-    tasks = mongo.db.tasks.find()
-    return render_template("index.html", tasks=tasks)
+    return render_template("index.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
