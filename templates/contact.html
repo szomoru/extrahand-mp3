@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section>
+  <div class="main-section contact-section">
+    <div class="center-form col-sm-6">
+      <h1>Contact Me</h1>
+      <p>Feel free to get in touch with me. I am always <strong>open for discussion</strong> about my project and
+        welcome any <strong>constructive criticism</strong>. I am also open to discuss <strong>new projects</strong>,
+        <strong>creative ideas</strong> or <strong>opporutnitues</strong>. </p>
+      <div>
+        <i class="fas fa-envelope fa-3x"></i>
+        <p><strong>Mail me:</strong></p>
+        <p>gergely.vig1978@gmail.com</p>
+      </div>
+      <div>
+        <i class="fas fa-phone fa-3x"></i>
+        <p><strong>Call me:</strong></p>
+        <p>+46 (0)73 353 4687</p>
+      </div>
+      <div>
+        <p><strong>Follow Me:</strong></p>
+        <div class="social-network-container container-fluid">
+          <ul class="social-networks">
+            <li><a href="https://www.facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li><a href="https://www.twitter.com" target="_blank" rel="noopener"><i
+                  class="fab fa-twitter-square"></i></a></li>
+            <li><a href="https://www.youtube.com" target="_blank" rel="noopener"><i
+                  class="fab fa-youtube-square"></i></a></li>
+            <li><a href="https://www.instagram.com" target="_blank" rel="noopener"><i
+                  class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="contact_form" class="center-form col-sm-6">
+      <form id="mailform" onsubmit="return sendMail(this);">
+        <input type="text" name="name" class="form-control" id="fullname" placeholder="Enter your name" required />
+        <input type="email" name="emailaddress" class="form-control" id="emailaddress"
+          placeholder="Enter a valid email address" required />
+        <textarea rows="15" name="message" class="form-control" id="message" placeholder="Enter your message ..."
+          required></textarea>
+        <button type="submit" class="btn center-block btn-form">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
