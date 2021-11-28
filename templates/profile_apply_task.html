@@ -11,7 +11,7 @@
                 <!-- Task Name -->
                 <div class="row mb-3">
                     <div class="col">
-                        <input id="task_name" placeholder="Task name" name="task_name" type="password"
+                        <input id="task_name" placeholder="Task name" name="task_name" type="text"
                             value="{{ task.task_name }}" minlength="5" maxlength="40" class="form-control" readonly>
                         <label class="form-label" for="task_name">Give a name to your task</label>
                     </div>
@@ -119,7 +119,7 @@
                 <!-- Confirm and Cancel form button -->
                 <div class="row mb-5 mx-auto">
                     <div class="col-md-6 mx-auto">
-                        <a href="{{ url_for('get_tasks') }}" class="btn btn-danger text-shadow">
+                        <a href="{{ url_for('alltask') }}" class="btn btn-danger text-shadow">
                             Cancel
                         </a>
                     </div>

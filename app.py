@@ -15,12 +15,24 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+
 mongo = PyMongo(app)
 
 
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
+    tasks = list(mongo.db.tasks.find())
+    return render_template("index.html", tasks=tasks)
+
+
+@app.route("/home")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/alltask")
+def alltask():
     tasks = list(mongo.db.tasks.find())
     return render_template("profile_alltask.html", tasks=tasks)
 
@@ -34,7 +46,7 @@ def mytasks():
 @app.route("/get_users")
 def get_users():
     users = list(mongo.db.users.find())
-    return render_template("profile_alltask.html", users=users)
+    return render_template("profile.html", users=users)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -42,11 +54,6 @@ def search():
     query = request.form.get("query")
     tasks = list(mongo.db.tasks.find({"$text": {"$search": query}}))
     return render_template("profile.html", tasks=tasks)
-
-
-@app.route("/home")
-def home():
-    return render_template("index.html")
 
 
 @app.route("/contact")
@@ -119,8 +126,35 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    user = mongo.db.users.find_one(
+        {"username": session["user"].lower()})
+
+    if request.method == "POST":
+        mongo.db.users.update_one(
+            {"username": user["username"]},
+            {"$set": {"username": request.form.get("username").lower(),
+                      "fname": request.form.get("fname"),
+                      "lname": request.form.get("lname"),
+                      "age": int(request.form.get("age")),
+                      "address_l1": request.form.get("address_l1"),
+                      "address_l2": request.form.get("address_l2"),
+                      "city": request.form.get("city"),
+                      "postcode": int(request.form.get("postcode")),
+                      "cell": int(request.form.get("cell")),
+                      "email": request.form.get("email")}})
+
+        flash("Your Profile Has Been Updated", "success")
+        session["user"] = request.form.get("username").lower()
+        username = user["username"]
+
+        return redirect(url_for("profile", username=username, user=user))
+
+    return render_template(
+        "profile.html",
+        username=user["username"], user=user)   
+
+        
+"""
     fname = mongo.db.users.find_one(
         {"username": session["user"]})["fname"]
     lname = mongo.db.users.find_one(
@@ -148,6 +182,37 @@ def profile(username):
                                postcode=postcode, cell=cell, email=email)
 
     return redirect(url_for("login"))
+"""
+
+
+@app.route("/edit_profile/<username>", methods=["GET", "POST"])
+def edit_profile(username):
+
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+        
+    if request.method == "POST":
+
+        submit = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "fname": request.form.get("fname").lower(),
+            "lname": request.form.get("lname").lower(),
+            "age": request.form.get("age").lower(),
+            "address_l1": request.form.get("address_l1").lower(),
+            "address_l2": request.form.get("address_l2").lower(),
+            "city": request.form.get("city").lower(),
+            "postcode": request.form.get("postcode").lower(),
+            "cell": request.form.get("cell").lower(),
+            "email": request.form.get("email").lower()
+        }
+
+        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
+        flash("Profile Successfully Updated")
+        return redirect(url_for("get_users"))
+
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)}) 
+    return render_template("profile_edit_profile.html", user=user)
 
 
 @app.route("/logout")
@@ -190,7 +255,7 @@ def new_task():
 def delete_task(task_id):
     mongo.db.tasks.remove({"_id": ObjectId(task_id)})
     flash("Task Successfully Deleted")
-    return redirect(url_for("get_tasks"))
+    return redirect(url_for("alltask"))
 
 
 @app.route("/edit_task/<task_id>", methods=["GET", "POST"])
