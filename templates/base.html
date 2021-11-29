@@ -26,11 +26,6 @@
         <h1 class="site-heading text-center text-faded d-none d-lg-block">
             <span class="site-heading-upper text-primary mb-3">There is always someone who needs an</span>
             <span class="site-heading-lower">Extra Hand</span>
-            {% if session.user %}
-            <div class="text-center text-faded d-none d-sm-block rounded">
-                <span class="member-title"><strong>{{ session.user }}</strong> is logged in</span>
-            </div>
-            {% endif %}
         </h1>
     </header>
     <!-- Navigation-->
@@ -79,6 +74,18 @@
             </div>
         </div>
     </nav>
+
+    {% if session.user %}
+        <section>
+            <div class="row cta">
+            <div class="text-center rounded mb-3">
+                <h3 class="section-heading">
+                <span class="section-heading-lower">Welcome {{ session.user }}</span>
+                </h3>
+            </div>
+            </div>
+        </section>
+    {% endif %}
 
     <section class="row">
         <div class="col-xl-9 mx-auto section-middle">
