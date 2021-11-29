@@ -11821,3 +11821,14 @@ i {
     line-height: initial;
   }
 }
+
+@media only screen and (min-width: 0px) {
+  nav {
+    height: fit-content;
+    line-height: initial;
+  }
+}
+
+.navbar-dark .navbar-brand {
+  color: #f6e1c5;
+}
