@@ -70,7 +70,7 @@ def register():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Username already exists", "danger")
             return redirect(url_for("register"))
 
         register = {
@@ -90,7 +90,7 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+        flash("Registration Successful!", "success")
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
@@ -112,12 +112,12 @@ def login():
                     "profile", username=session["user"]))
             else:
                 # invalid password match
-                flash("Incorrect Username and/or Password")
+                flash("Incorrect Username and/or Password", "danger")
                 return redirect(url_for("login"))
 
         else:
             # username doesn't exist
-            flash("Incorrect Username and/or Password")
+            flash("Incorrect Username and/or Password", "danger")
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -208,7 +208,7 @@ def edit_profile(username):
         }
 
         mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
-        flash("Profile Successfully Updated")
+        flash("Profile Successfully Updated", "success")
         return redirect(url_for("get_users"))
 
     user = mongo.db.users.find_one({"_id": ObjectId(user_id)}) 
@@ -218,7 +218,7 @@ def edit_profile(username):
 @app.route("/logout")
 def logout():
     # remove user from session cookie
-    flash("You have been logged out")
+    flash("You have been logged out", "success")
     session.pop("user")
     return redirect(url_for("login"))
 
@@ -245,7 +245,7 @@ def new_task():
             "is_booked": "off"
         }
         mongo.db.tasks.insert_one(task)
-        flash("Task Successfully Added")
+        flash("Task Successfully Added", "success")
         return redirect(url_for("new_task"))
 
     return render_template("profile_new_task.html")
@@ -254,7 +254,7 @@ def new_task():
 @app.route("/delete_task/<task_id>")
 def delete_task(task_id):
     mongo.db.tasks.remove({"_id": ObjectId(task_id)})
-    flash("Task Successfully Deleted")
+    flash("Task Successfully Deleted", "success")
     return redirect(url_for("alltask"))
 
 
@@ -279,7 +279,7 @@ def edit_task(task_id):
             "is_booked": "off"
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
-        flash("Task Successfully Updated")
+        flash("Task Successfully Updated", "success")
 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     return render_template("profile_edit_task.html", task=task)
@@ -310,7 +310,7 @@ def apply_for_task(task_id):
             "bestcontact_provider": request.form.get("bestcontact_provider")
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
-        flash("Applied Successfully")
+        flash("Applied Successfully", "success")
 
     task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     return render_template("profile_apply_task.html", task=task)

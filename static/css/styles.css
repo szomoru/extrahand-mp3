@@ -11789,6 +11789,10 @@ i {
   color: #f57f17;
 }
 
+.social-networks svg {
+  height: 2rem;
+}
+
 /* ---------- Social network styling - END ----------*/
 
 
