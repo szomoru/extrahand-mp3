@@ -53,7 +53,7 @@ def get_users():
 def search():
     query = request.form.get("query")
     tasks = list(mongo.db.tasks.find({"$text": {"$search": query}}))
-    return render_template("profile.html", tasks=tasks)
+    return render_template("profile_alltask.html", tasks=tasks)
 
 
 @app.route("/contact")
