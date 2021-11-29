@@ -130,7 +130,7 @@ def profile(username):
         {"username": session["user"].lower()})
 
     if request.method == "POST":
-        mongo.db.users.update_one(
+        mongo.db.users.update_many(
             {"username": user["username"]},
             {"$set": {"username": request.form.get("username").lower(),
                       "fname": request.form.get("fname"),
@@ -153,7 +153,7 @@ def profile(username):
         "profile.html",
         username=user["username"], user=user)   
 
-        
+
 """
     fname = mongo.db.users.find_one(
         {"username": session["user"]})["fname"]
@@ -319,6 +319,25 @@ def apply_for_task(task_id):
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.errorhandler(404)
+def not_found(e):
+    """
+        Render 404 page if errors occur
+        Code credit to Carla Buongiorno (The Collector project)
+        https://github.com/CarlaBuongiorno/The-Collector
+    """
+    return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def internal_error(e):
+    """
+        Render 500 page if errors occur
+        Code credit to Carla Buongiorno (The Collector project)
+        https://github.com/CarlaBuongiorno/The-Collector
+    """
+    return render_template("500.html"), 500
 
 
 if __name__ == "__main__":

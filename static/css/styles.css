@@ -11673,6 +11673,24 @@ form {
 }
 
 
+/* --- 404 Start --- */
+
+.error-text-align {
+  text-align: center;
+  
+}
+.error-text {
+  text-align: center;
+  color: rgba(47, 23, 15, 0.9)7;
+  background-color: #e9b067;
+}
+
+
+
+/* --- 404 End --- */
+
+
+
 /* --- STICKY NAVBAR --- */
 
 #navbar {
