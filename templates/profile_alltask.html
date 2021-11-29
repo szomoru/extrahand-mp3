@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<section class=" col-xl-9 mx-auto rounded">
 <div class="row card-panel cta">
+  <h2 class="section-heading mb-4">
+    <span class="section-heading-upper text-center">Search by Keywords in task names and description</span>
+    
+  </h2>
   <form action="{{ url_for('search') }}" method="post" class="col s12">
     <div class="row valign-wrapper center-align">
       <div class="input-field col s12">
@@ -17,6 +22,7 @@
     </div>
   </form>
 </div>
+</section>
 
 <section class="page-section cta col-xl-9 mx-auto rounded">
   <div class="container">
