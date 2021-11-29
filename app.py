@@ -154,37 +154,6 @@ def profile(username):
         username=user["username"], user=user)   
 
 
-"""
-    fname = mongo.db.users.find_one(
-        {"username": session["user"]})["fname"]
-    lname = mongo.db.users.find_one(
-        {"username": session["user"]})["lname"]
-    address_l1 = mongo.dlname = mongo.db.users.find_one(
-        {"username": session["user"]})["lname"]
-    address_l1 = mongo.db.users.find_one(
-        {"username": session["user"]})["address_l1"]
-    address_l2 = mongo.db.users.find_one(
-        {"username": session["user"]})["address_l2"]
-    city = mongo.db.users.find_one(
-        {"username": session["user"]})["city"]
-    postcode = mongo.db.users.find_one(
-        {"username": session["user"]})["postcode"]
-    cell = mongo.db.users.find_one(
-        {"username": session["user"]})["cell"]
-    email = mongo.db.users.find_one(
-        {"username": session["user"]})["email"]
-
-    if session["user"]:
-        return render_template("profile.html",
-                               username=username, fname=fname,
-                               lname=lname, address_l1=address_l1,
-                               address_l2=address_l2, city=city,
-                               postcode=postcode, cell=cell, email=email)
-
-    return redirect(url_for("login"))
-"""
-
-
 @app.route("/edit_profile/<username>", methods=["GET", "POST"])
 def edit_profile(username):
 
@@ -212,7 +181,7 @@ def edit_profile(username):
         return redirect(url_for("get_users"))
 
     user = mongo.db.users.find_one({"_id": ObjectId(user_id)}) 
-    return render_template("profile_edit_profile.html", user=user)
+    return render_template("profile.html", user=user)
 
 
 @app.route("/logout")
