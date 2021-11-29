@@ -11684,9 +11684,6 @@ form {
   color: rgba(47, 23, 15, 0.9)7;
   background-color: #e9b067;
 }
-
-
-
 /* --- 404 End --- */
 
 
@@ -11810,3 +11807,13 @@ i {
 }
 
 /* ----- HOVER STYLING - END -----*/
+
+
+/* ----- ELIMINATE MATERIALIZE MESS ----- */
+
+@media only screen and (min-width: 601px) {
+  nav {
+    height: fit-content;
+    line-height: initial;
+  }
+}
