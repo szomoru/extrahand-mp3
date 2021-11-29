@@ -11832,3 +11832,11 @@ i {
 .navbar-dark .navbar-brand {
   color: #f6e1c5;
 }
+
+
+/* ----- SEARCH STYLING -----*/
+
+#query {
+  background-color:  #f6e1c5;
+  border-radius: .25rem;
+}
