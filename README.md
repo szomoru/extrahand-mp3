@@ -1,108 +1,163 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align="center">Extra Hand</h1>
+<h1 align="center"><img src="./assets/img/readme/responsive.PNG" /></h1>
 
-Welcome szomoru,
+:point_right: <a href="https://szomoru.github.io/extrahand-mp3/">Live Website</a> :point_left:
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+:point_right: <a href="https://github.com/szomoru/extrahand-mp3">Github Repository</a> :point_left:
+ 
+ ## About
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+This website was created to fullfill the requirements of Code Institute 3rd Milstone Project. The main focus of this project is database handling and manipulation through a website. The main goal to maintain a dtabase connected to the website with full CRUD functionality. 
+The main purpose of this website to bring together people who needs help and with people who willing to help. This website is based on membership. Registered account required to use the full functionality of the website eg register tasks that we would liket to have someone to help with and also apply to help someone with something. There is no limitation in the audiance, because everyone can be in a situation when needs help. Or is in a situation when can help. 
+As a first step this site is created for private persons, but later it is possible to involve professionals and company accounts. 
+This site was not built for earning money, but the possibility is given. While it is for private persons, ads placed on the site can genarate some income, later on when companies join the and offer professional solutions some commission can be earned as well. 
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Table of Contents
 
-`python3 -m http.server`
+[User Experience (UX)](#UX)
 
-A blue button should appear to click: _Make Public_,
+[Features](#features)
 
-Another blue button should appear to click: _Open Browser_.
+[Technologies Used](#technologies)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+[JavaScripts](#scripts)
 
-A blue button should appear to click: _Make Public_,
+[Testing](#testing)
 
-Another blue button should appear to click: _Open Browser_.
+[Note about Search Volumes](#searchvolumes)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+[Deployment](#deployment)
 
-To log into the Heroku toolbelt CLI:
+[Credits](#credits)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+<a name="UX"></a>
 
-------
+## User Experience (UX)
 
-## Release History
+-   ### User stories
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+    -   #### First Time Visitor Goals
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+        1. As a First Time Visitor, I want to easily understand the content of the webpage and the aim of the site.
+        2. As a First Time Visitor, I want Register for an Account
+        3. As a First Time Visitor, I want to be able to easily navigate through the site and get an overal picture about the site structure.
+        4. As a First Time Visitor, I want to see their social media availability, where i can get more information about the site or organisation / person behind that.
+        5. As a first Time Visitor i want to see clearly what content available for without registration and what requires registration. 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+    -   #### Returning Visitor Goals
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+        1. As a Returning Visitor, I want to be able to login with my previously registered credentials.
+        2. As a Returning Visitor, I want to be able to register request for help.
+        3. As a Returning Visitor, I want to be able to apply to help someone else.
+        4. As a Returning Visitor, I want to be able to update my profile information.
+        5. As a Returning Visitor, I want to be able to edit my help request information.
+        6. As a Returning Visitor, I want to be able to delete my registered requests.
+        7. As a Returning Visitor, I want to be able to browse among all regitered tasks.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+    -   #### Admin Goals
+        As the admin i want to be able to delete any of the registered tasks.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+-   ### Design
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+    -   #### Colour Scheme
+        This website was built on a startbootstrap template, called business-casual (https://startbootstrap.com/theme/business-casual).
+        The base of selection of this template is the calm, simple, but professional look of the site. It is stylish but very well represent the serious message of the website. Help eachother ...
+        The basic colors follow through the whole website. Some of the basic colors:
+        - #f6e1c5 mainly used as a bright background of a section
+        - rgba(47, 23, 15, 0.9) mainly used the beckground of the navbar and the footer
+        - #e6a756 mainly color of the buttons (which is not submit or cancel)
+        - sisimple red and green color used for cancel and submit buttons
+        - light grey, light blue and yellow colors are used as information colors these colors comming from bootstrap just like the danger, info, warning bootstrap names
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+    -   #### Typography
+        - The fonts are also comming from the business-casual startbootstrap template (https://startbootstrap.com/theme/business-casual). Me as a developer has not changed it at all, i have not added or removed fonts.
+    
+    -   #### Imagery
+        -   This site at this stage does not use many images. There is one huge image as a background image of the whole site on everypages. This image symbolise the supportive attitude to eachother. there is only one more picture except that on the about page which is just a smaller section of a bigger world famous painting (Michaelangelo - The Creation of Adam).
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+-   ### Wireframes
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+    -   There were several design changes during the development process, but the final site looks very similar with the wireframe. 
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+    -   Mobile Wireframe - [View](./assets/wireframes/Wireframe_Iphone_X_MP2.pdf)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+        <img src="./assets/img/readme/wireframe_iphonex_mp2.PNG" height="400px" />
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+    -   Ipad Pro Wireframe - [View](./assets/wireframes/Wireframe_IpadPro_MP2.pdf)
 
-------
+        <img src="./assets/img/readme/wireframe_ipadpro_mp2.PNG" height="400px" />
 
-## FAQ about the uptime script
 
-**Why have you added this script?**
+    -   Desktop Wireframe - [View](./assets/wireframes/Wireframe_Desktop_MP2.pdf)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+        <img src="./assets/img/readme/wireframe_desktop_mp2.PNG" height="400px" />
 
-**How will this affect me?**
+    <a name="features"></a>        
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+    ## Features
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+    ### Present Features
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+    #### Features accross all Pages
 
-**So….?**
+    -   The website was designed to have the same structure on every pages. On this way the visitor feel comfortable and find her/his way on every page.
+        The layout is the following:
+        - On the top section there is the Header with Navigation links
+        - The middel section is the largest "main" section on every page, which contains the main information.
+        - The page is closed with the Footer, which in this case contains only a Copyright text. 
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+    - [x] **Header**
+        - The header can be divided into 2 main section. The first one is the name of the site ("Popular more Popular") without any link, it is just a decoration element. 
+        - The second main section is the "navigation" section with 3 navigation items:
+            -   About the Game
+            -   Game
+            -   Contact
+    - [x] **Main section**
+        - The main section contains the page specific information on every page.
+    - [x] **Footer**
+        - Always located as the last element of the page. In this project it does not contain any important information not to steal the focus of the visitor.        
 
-**Can I opt out?**
+    #### Features specific to Pages
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+    - [x] **Landing page**
+        - Hero imnage set to the background, which clearly represents the type of the webpage
+        - A smaller window floating over the background, which highlight some topic of the content od the page and call to action
+        - If the visitor accept the invitation and take action after clicking the "Learn more" button, gets to the Home page.
+    - [x] **About the Game page**
+        - This page is the first page, that is shown after the landing page. By seeing this page the visitor gets a short description about the game itslef.
+        - The visitor also can see screenshots from the game, so when she/he starts to play they are already familiar with the layout.
+        - As a last element on this page the visitor can click on a button, which takes her/him to the Game page and start the game
+    - [x] **Game page**
+        This Game page is the soul of this site. Visually it is divided into 3 sections:
+        - Header element with a question
+        - "Start New Game" button, which can be a pushed anytime during the game
+        - Score area where the visitor can follow up how many question is used from the total 10 questions and also how many correct and wrong answer has the visitor.
+        
+        At the end of the game (after answering all the 10 questions), there are 2 modals which can be shown:
+        - "Winner" modal:
+            This modal is shown if the number of the correct answers larger or equal than the number of the wrong answers. 
+        - "Loser" modal: 
+            This modal is shown if the number of the correct answers smaller than the number of the wrong answers.
+        The modal window also contains text and Smile icons to visulaize if the final result is positiv or negative.
+        There is also a section which shows the statistics of the game (number of correct and wrong answers).
+    - [x] **Contact page**
+        This is the main page for the visitor if she/he wants to contact to the website developer.
+        This page is divided into 2 main sections:
+        - left side of the section contains a description in which cases the visitor can contact to the developer and also contains:
+         - address
+         - phone number
+         - social media links
+         of the developer. 
+        - right section contains a contact form, where the visitor can leave her/his name/e-mail and the message.
+         this feature is fully set up through the email.js website 
+        
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+    ### Future Features
+    This website and game is full of possibilities for future develpments and adding new features. Here are some possible future developments:
+    - Adding a feature where the visitor can define the number of the questions her-/himself. 
+    - Separate page with a form to uploading data into the database.
+    - After a certain number of the database it makes sense to have the possibility to play games based on professions or sex or origin of people.  
