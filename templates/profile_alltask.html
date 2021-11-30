@@ -48,6 +48,8 @@
               </div>
             </div>
             {% else %}
+            <!-- This section defines wht type of lable the card header gets. Depends on the status of the task
+            if it is booked and by whom it is booked-->
               {% if session.user|lower == task.created_by %}
               <div id="collaps-header-own" class="collapsible-header">
                 <div class="col">
@@ -123,23 +125,30 @@
                 </li>
                 {% endif %}
                 {% if task.is_booked %}
-                  {% if session.user|lower != task.booked_by %}
-                  <li class="section-heading-upper">Booked by User:
-                    <span>{{ task.booked_by }}</span>
+                  {% if session.user|lower == task.booked_by %}
+                  <li class="section-heading-upper">This is my Task
                   </li>
                   {% else %}
-                  <li class="section-heading-upper">This is my Task
+                  <li class="section-heading-upper">Booked by User:
+                    <span>{{ task.booked_by }}</span>
                   </li>
                   {% endif %}
                 {% endif %}
               </ul>
               <div class="row">
+                <!-- This section define if at the end of the card body there is a anabled or disabled apply button
+                or just further information about the contact of help provider/requester-->
                 {% if session.user|lower != "admin" %}
-                  {% if session.user|lower != task.created_by %}
+                  {% if session.user|lower == task.created_by %}
+                    {% if task.is_booked %}
+                    <span class="info-btn-height btn btn-light me-md-2 text-shadow font-style-own">Contact of help provider:
+                      {{ task.bestcontact_provider }} </span>
+                    {% endif %}
+                  {% else %}
                     {% if task.is_booked %}
                       {% if session.user|lower != task.booked_by %}
                       <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
-                        class="btn btn-light me-md-2 text-shadow font-style-own" type="button">Apply for Task</a>
+                        class="btn btn-light me-md-2 text-shadow font-style-own" type="button" disabled>Apply for Task</a>
                       {% else %}
                       <span class="info-btn-height btn btn-light me-md-2 text-shadow font-style-own">Contact of help
                         requester:
@@ -147,12 +156,7 @@
                       {% endif %}
                     {% else %}
                     <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"
-                      class="btn btn-light me-md-2 text-shadow font-style-own" type="button" disabled>Apply for Task</a>
-                    {% endif %}
-                  {% else %}
-                    {% if task.is_booked %}
-                    <span class="info-btn-height btn btn-light me-md-2 text-shadow font-style-own">Contact of help provider:
-                      {{ task.bestcontact_provider }} </span>
+                      class="btn btn-light me-md-2 text-shadow font-style-own" type="button">Apply for Task</a>
                     {% endif %}
                   {% endif %}
                 {% else %}
