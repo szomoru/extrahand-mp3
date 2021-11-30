@@ -39,36 +39,37 @@
                 <ul class="navbar-nav mx-auto">
 
                     {% if session.user %}
-                        {% if session.user|lower == "admin"  %}
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                href="{{ url_for('alltask') }}">All Tasks</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                href="{{ url_for('logout') }}">Logout</a></li>
-                        {% else %}
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                    href="{{ url_for('alltask') }}">All Tasks</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ url_for('new_task') }}">Add
-                                    New Task</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ url_for('mytasks', username = session['user']) }}">Tasks
-                                    By Me</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                    href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                href="{{ url_for('logout') }}">Logout</a></li>
-                        {% endif %}
+                    {% if session.user|lower == "admin"  %}
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ url_for('alltask') }}">All
+                            Tasks</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('logout') }}">Logout</a></li>
                     {% else %}
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                href="{{ url_for('get_tasks') }}">Home</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                href="{{ url_for('login') }}">Login/Register</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
-                                href="{{ url_for('about') }}">About</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ url_for('alltask') }}">All
+                            Tasks</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{{ url_for('new_task') }}">Add
+                            New Task</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('mytasks', username = session['user']) }}">Tasks
+                            By Me</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('profile', username = session['user']) }}">Profile</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('logout') }}">Logout</a></li>
                     {% endif %}
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" 
-                                href="{{ url_for('contact') }}">Contact</a></li>
-                    
+                    {% else %}
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('get_tasks') }}">Home</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('login') }}">Login/Register</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('about') }}">About</a></li>
+                    {% endif %}
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase"
+                            href="{{ url_for('contact') }}">Contact</a></li>
+
 
                 </ul>
             </div>
@@ -76,15 +77,15 @@
     </nav>
 
     {% if session.user %}
-        <section>
-            <div class="row cta">
+    <section>
+        <div class="row cta">
             <div class="text-center rounded mb-3">
                 <h3 class="section-heading">
-                <span class="section-heading-lower">Welcome {{ session.user }}</span>
+                    <span class="section-heading-lower">Welcome {{ session.user }}</span>
                 </h3>
             </div>
-            </div>
-        </section>
+        </div>
+    </section>
     {% endif %}
 
     <section class="row">
@@ -135,23 +136,25 @@
     </footer>
 
     <script>
-            // When the user scrolls the page, execute myFunction
-            window.onscroll = function() {myFunction()};
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function () {
+            myFunction()
+        };
 
-            // Get the navbar
-            var navbar = document.getElementById("navbar");
+        // Get the navbar
+        var navbar = document.getElementById("navbar");
 
-            // Get the offset position of the navbar
-            var sticky = navbar.offsetTop;
+        // Get the offset position of the navbar
+        var sticky = navbar.offsetTop;
 
-            // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-            function myFunction() {
+        // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
             if (window.pageYOffset >= sticky) {
                 navbar.classList.add("sticky")
             } else {
                 navbar.classList.remove("sticky");
             }
-            }
+        }
     </script>
 
     <!-- JQUERY -->

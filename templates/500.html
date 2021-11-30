@@ -2,20 +2,22 @@
 {% block content %}
 
 <section>
+  
   <div class="row error-text-align">
-    
-      <span class="error-text"><h1>500: Internal Server Error</h1></span>
-      <span><h2></h2></span><br>
-      <span></span><br>
-      <div>
-       
-          <a href="{{ url_for('contact') }}"> <h3>Go to the Contact Page</h3></a>
-        
-      </div>
-      
-
-    
+    <span class="error-text">
+      <h1>500: Internal Server Error</h1>
+    </span>
+    <span>
+      <h2></h2>
+    </span><br>
+    <span></span><br>
+    <div>
+      <a href="{{ url_for('contact') }}">
+        <h3>Go to the Contact Page</h3>
+      </a>
+    </div>
   </div>
+
 </section>
 
 {% endblock %}

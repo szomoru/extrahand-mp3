@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <section class="page-section clearfix">
+    
     <div class="container">
         <div class="intro">
-            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/static/assets/img/intro.jpg" alt="Main page image" />
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/static/assets/img/intro.jpg"
+                alt="Main page image" />
             <div class="intro-text left-0 text-center bg-faded p-5 rounded">
                 <h2 class="section-heading mb-4">
                     <span class="section-heading-upper"><i><strong>"I need help"</i></strong></span>
@@ -21,29 +22,30 @@
             </div>
         </div>
     </div>
+
 </section>
 
 <section class="page-section cta">
-    
-        <div class="row">
-            <div class="col">
-                <div class="cta-inner bg-faded text-center rounded">
-                    <h2 class="section-heading mb-4">
-                        <span class="section-heading-upper">Available Tasks for registered members</span>
-                    </h2>
-                    {% for task in tasks %}
-                    <div class="row AllTaskList mx-auto">                        
-                            <div class="container_tasks">
-                                <span class="section-heading-upper"><strong>Task Name: </strong></span> {{ task.task_name }}<br>
-                                <span class="section-heading-upper"><strong>Task Description:
-                                    </strong></span>{{ task.task_description }}<br>
-                            </div>                        
+
+    <div class="row">
+        <div class="col">
+            <div class="cta-inner bg-faded text-center rounded">
+                <h2 class="section-heading mb-4">
+                    <span class="section-heading-upper">Available Tasks for registered members</span>
+                </h2>
+                {% for task in tasks %}
+                <div class="row AllTaskList mx-auto">
+                    <div class="container_tasks">
+                        <span class="section-heading-upper"><strong>Task Name: </strong></span> {{ task.task_name }}<br>
+                        <span class="section-heading-upper"><strong>Task Description:
+                            </strong></span>{{ task.task_description }}<br>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
         </div>
-    
+    </div>
+
 </section>
 
 {% endblock %}

@@ -63,7 +63,6 @@
                     </div>
                 </div>
 
-
                 <!-- Switches -->
                 <div id="switches" class="row mb-5 mx-auto">
 
@@ -71,12 +70,12 @@
                         <div class="switch mb-3">
                             <label for="is_car">
                                 {% if task.is_car == "on" %}
-                                    <input type="checkbox" id="is_car" name="is_car" checked>
+                                <input type="checkbox" id="is_car" name="is_car" checked>
                                 {% else %}
-                                    <input type="checkbox" id="is_car" name="is_car">
+                                <input type="checkbox" id="is_car" name="is_car">
                                 {% endif %}
-                                    <span class="lever"></span>
-                                    Possibly car needed
+                                <span class="lever"></span>
+                                Possibly car needed
                             </label>
                         </div>
                     </div>
@@ -85,12 +84,12 @@
                         <div class="switch mb-3">
                             <label for="is_outdoor">
                                 {% if task.is_outdoor == "on" %}
-                                    <input type="checkbox" id="is_outdoor" name="is_outdoor" checked>
+                                <input type="checkbox" id="is_outdoor" name="is_outdoor" checked>
                                 {% else %}
-                                    <input type="checkbox" id="is_outdoor" name="is_car">
+                                <input type="checkbox" id="is_outdoor" name="is_car">
                                 {% endif %}
-                                    <span class="lever"></span>
-                                    Some part of the task is outdoor
+                                <span class="lever"></span>
+                                Some part of the task is outdoor
                             </label>
                         </div>
                     </div>
@@ -99,17 +98,16 @@
                         <div class="switch mb-3">
                             <label for="is_heavy_lift">
                                 {% if task.is_heavy_lift == "on" %}
-                                    <input type="checkbox" id="is_heavy_lift" name="is_heavy_lift" checked>
+                                <input type="checkbox" id="is_heavy_lift" name="is_heavy_lift" checked>
                                 {% else %}
-                                    <input type="checkbox" id="is_heavy_lift" name="is_heavy_lift">
+                                <input type="checkbox" id="is_heavy_lift" name="is_heavy_lift">
                                 {% endif %}
-                                    <span class="lever"></span>
-                                    Task can contain heavy lifting tasks
+                                <span class="lever"></span>
+                                Task can contain heavy lifting tasks
                             </label>
                         </div>
                     </div>
                 </div>
-
 
                 <!-- Confirm and Cancel form button -->
                 <div class="row mb-5 mx-auto">
@@ -124,12 +122,8 @@
                         </button>
                     </div>
                 </div>
-
-
-        </div>
-
+            </div>
         </form>
-
     </div>
 </div>
 
