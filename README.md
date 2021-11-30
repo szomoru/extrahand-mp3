@@ -335,6 +335,59 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 ### Testing User Stories from User Experience (UX) Section
 
+-   #### First Time Visitor Goals
+
+    1. As a First Time Visitor, I want to easily understand the content of the webpage and the aim of the site.
+        1. right on the index page there are 2 main expressions, which targets the topic of the website
+        2. the tasks in the database section on the main page also gives a short insight what is waiting for the user inside
+        3. the about navigation menu also gives a description
+    2. As a First Time Visitor, I want Register for an Account
+        1. to register to the website can happen by clicking on the register button on the main page
+        2. by clicking on the Login/register menupoint the user can get to the register form as well
+    3. As a First Time Visitor, I want to be able to easily navigate through the site and get an overal picture about the site structure.
+        1. There are not many menupoints outside of the member are, so nthing complicated to have a good overview.
+        2. At the user are  the navigation is a sticky navbar so even the user has to scroll away because of the contetnt, it will be always visible where the user can go
+    4. As a First Time Visitor, I want to see their social media availability, where i can get more information about the site or organisation / person behind that.
+        1. on the contact page all these informations are available
+        2. the content page available in the member area and outside the member area as well
+    5. As a first Time Visitor i want to see clearly what content available for without registration and what requires registration. 
+        1. right on the main page all the data which is available without registration is shown. Mor info accessable only with registration
+
+-   #### Returning Visitor Goals
+
+    1. As a Returning Visitor, I want to be able to login with my previously registered credentials.
+        - on the main page there is the Login / Register menupoint. By clicking on that the user get to the login page, where can fill in the previously registered credentials, if the login name and the password were given correctly, theuser gets into the user area. If there was a problem, the user get a flash message
+    2. As a Returning Visitor, I want to be able to register request for help.
+        - in the member area there is a separate menupoint where the user can register a request for help through a form
+    3. As a Returning Visitor, I want to be able to apply to help someone else.
+        - in the member area the user can see all the available tasks. Can also search among them. All available (understand not taken) task has an active apply button. If the task is not available, the Apply button is deactivated
+    4. As a Returning Visitor, I want to be able to update my profile information.
+        - after logging into the member area the first page that the user see is the profile page. by just simply modifying the data in the fields and by clicking on the Update Profile button the previously given data can be overwritten, Note: every registered data can be updated except the username and password
+    5. As a Returning Visitor, I want to be able to edit my help request information.
+        - in the member area the user can edit and delete the tasks that were created by herself/himself. it can be done on the All Tasks page or under the Tasks by Me menupoint by just simply clicking on the Edit button
+    6. As a Returning Visitor, I want to be able to delete my registered requests.
+        - in the member area the user can edit and delete the tasks that were created by herself/himself. it can be done on the All Tasks page or under the Tasks by Me menupoint by just simply clicking on the Delete button
+    7. As a Returning Visitor, I want to be able to browse among all regitered tasks.
+        - in the member area under the All Tasks menupoin all the registered tasks i nthe system are visible. The user can simply scroll down or search for specific keywords in the search input field. The search function search for wirds in the task name and the task description 
+
+-   #### Admin Goals
+    As the admin i want to be able to delete any of the registered tasks.
+        - as an admin the only thing you can change is to delete any of the registered tasks. The registration can happen by anyone
+
+### Further Testing
+
+-   The Website was tested on Google Chrome, Internet Explorer, Microsoft Edge browsers.
+-   The website was viewed on a variety of devices such as Desktop, Laptop, iPhoneSE, iPhone 6 & iPhone 11 Pro.
+-   A large amount of testing was done to ensure that all pages were linking correctly.
+
+### Functional Testing
+-   During the development process and after that there were several tests carried out to validate the links. All external and internal links were tested several times.
+
+### Known Bugs
+At this point there are no known bugs but during the development process in the testing periods some bug has been detected. They were the following: 
+-   the main problems were communication between the database flask. By reinstalling the libraries the problems were solved. If not it turned out Github had problems
+-   during edit features the database data were not overwriten or were overwriten with no data. The problem mainly was that in the python snippet wrong addressing wer used
+
 
 <a name="deployment"></a>
 
