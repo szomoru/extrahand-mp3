@@ -83,7 +83,7 @@ def register():
             "address_l2": request.form.get("address_l2").lower(),
             "city": request.form.get("city").lower(),
             "postcode": request.form.get("postcode").lower(),
-            "cell": request.form.get("cell").lower(),
+            "cell": request.form.get("cell"),
             "email": request.form.get("email").lower()
         }
         mongo.db.users.insert_one(register)
@@ -140,7 +140,7 @@ def profile(username):
                       "address_l2": request.form.get("address_l2"),
                       "city": request.form.get("city"),
                       "postcode": int(request.form.get("postcode")),
-                      "cell": int(request.form.get("cell")),
+                      "cell": request.form.get("cell"),
                       "email": request.form.get("email")}})
 
         flash("Your Profile Has Been Updated", "success")
