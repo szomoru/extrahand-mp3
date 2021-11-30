@@ -1,7 +1,7 @@
 <h1 align="center">Extra Hand</h1>
 <h1 align="center"><img src="docs/test/amirespinsive_extrahand.JPG" /></h1>
 
-:point_right: <a href="https://szomoru.github.io/extrahand-mp3/">Live Website</a> :point_left:
+:point_right: <a href="http://extra-hand-mp3.herokuapp.com/alltask">Live Website</a> :point_left:
 
 :point_right: <a href="https://github.com/szomoru/extrahand-mp3">Github Repository</a> :point_left:
  
@@ -307,6 +307,9 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 -   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
 
+    The majority of the problems for the validator result is comming from the for cycle. It duplicates uniq ids. It is a known bug, added to the known bugs.
+    Alsi the page use template thatcontains some warnings, but it does not have effect on the running of the page
+
     -   index.html                PASSED    [Result]()
     -   login.html                 PASSED    [Result]()
     -   register.html             PASSED    [Result]()
@@ -325,7 +328,7 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 -   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
 
-    -   style.css                 PASSED 
+    -   style.css                 PASSED with Note that it generates a lot of warnings. It is comming from that the page use template which had an extremly huge style.css file.
         
     :point_right: <a href="http://jigsaw.w3.org/css-validator/check/referer">
         <img style="border:0;width:88px;height:31px"
@@ -387,6 +390,11 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 At this point there are no known bugs but during the development process in the testing periods some bug has been detected. They were the following: 
 -   the main problems were communication between the database flask. By reinstalling the libraries the problems were solved. If not it turned out Github had problems
 -   during edit features the database data were not overwriten or were overwriten with no data. The problem mainly was that in the python snippet wrong addressing wer used
+-   There is still one known bugs left in the page. The help requester contact is not stored in the database so it cannot be taken by the help provider in his description.
+-   Warnings from Validator (html) due to duplicated ids. Source is knoiw, waiting for correcting. Does not have a major effect on the webpage running.
+-   Warnings from CSS validator. Problem known, source is that the page uses template with a huge style.css file. Came with the template ... 
+-   Weak Performance "52", cause can be the 2 right above mentioned problems. LAck of performance known correction starts. No major impect on the page running. 
+
 
 
 <a name="deployment"></a>
@@ -513,7 +521,8 @@ Alternatively, if using Gitpod, you can click below to create your own workspace
 
 ### Media
 
--   All used images have been taken from wikipedia page:
+-   Helping hands image for the about page is comming from the https://www.helpinghandsrehab.com/ website
+-   Background image source from www.hbr.org (https://hbr.org/resources/images/article_assets/2020/02/Feb20_17_82581455-3.jpg)
     
 
 ### Acknowledgements
