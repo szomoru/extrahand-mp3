@@ -80,21 +80,49 @@ This site was not built for earning money, but the possibility is given. While i
 
 -   ### Wireframes
 
-    -   There were several design changes during the development process, but the final site looks very similar with the wireframe. 
+    -   There were several design changes during the development process, but the final site looks very similar with the wireframe. The wireframe does not contain any colorscheme, because when it was done it was already known that template will be used, but still was not decided which one. On the following pictures the wireframes are introduced by htmls. Each image contain a desktop, tablet, and phone size wireframe.  
 
-    -   Mobile Wireframe - [View](./assets/wireframes/Wireframe_Iphone_X_MP2.pdf)
+    -   index.html
 
-        <img src="./assets/img/readme/wireframe_iphonex_mp2.PNG" height="400px" />
-
-
-    -   Ipad Pro Wireframe - [View](./assets/wireframes/Wireframe_IpadPro_MP2.pdf)
-
-        <img src="./assets/img/readme/wireframe_ipadpro_mp2.PNG" height="400px" />
+        <img src="docs/wireframe/indexhtml.png" height="400px" />
 
 
-    -   Desktop Wireframe - [View](./assets/wireframes/Wireframe_Desktop_MP2.pdf)
+    -   register.html 
 
-        <img src="./assets/img/readme/wireframe_desktop_mp2.PNG" height="400px" />
+        <img src="docs/wireframe/registerhtml.png" height="400px" />
+
+
+    -   login.html 
+
+        <img src="docs/wireframe/loginhtml.png" height="400px" />
+
+    -   profile.html 
+
+        <img src="docs/wireframe/profilehtml.png" height="400px" />
+
+    -   profile_alltask.html 
+
+        <img src="docs/wireframe/profile_alltaskhtml.png" height="400px" />
+
+    -   profile_new_task.html 
+
+        <img src="docs/wireframe/profile_newtaskhtml.png" height="400px" />
+
+    -   profile_edit_task.html 
+
+        <img src="docs/wireframe/profile_edittaskhtml.png" height="400px" />
+
+    -   profile_mytasks.html 
+
+        <img src="docs/wireframe/profile_allmytaskhtml.png" height="400px" />
+
+    -   about.html 
+
+        <img src="docs/wireframe/abouthtml.png" height="400px" />
+
+    -   contact.html 
+
+        <img src="docs/wireframe/contacthtml.png" height="400px" />
 
     <a name="features"></a>        
 
@@ -107,15 +135,29 @@ This site was not built for earning money, but the possibility is given. While i
     -   The website was designed to have the same structure on every pages. On this way the visitor feel comfortable and find her/his way on every page.
         The layout is the following:
         - On the top section there is the Header with Navigation links
-        - The middel section is the largest "main" section on every page, which contains the main information.
-        - The page is closed with the Footer, which in this case contains only a Copyright text. 
+        - The middel section is the largest "main" section on every page, which contains the main information. This middel section is also very well separated visually. 
+        - The page is closed with the Footer, which in this case contains only a Copyright text and the year. 
 
     - [x] **Header**
-        - The header can be divided into 2 main section. The first one is the name of the site ("Popular more Popular") without any link, it is just a decoration element. 
-        - The second main section is the "navigation" section with 3 navigation items:
-            -   About the Game
-            -   Game
-            -   Contact
+        - The header contains the title of the site (Extra Hand)
+        - The second section is the "navigation" section with varried number of menupoints. The NAvigation bar is a sticky navigation, so by scrolling up the page the navigations are always visible. The folowing cases are possible based on authorization:
+            -   Basic state no user logged in:
+                - Home
+                - Login/Register
+                - About
+                - Contact
+            -   User logged in:
+                - All Tasks
+                - Add New Task
+                - Tasks By Me
+                - Profile
+                - Logout
+                - Contact
+            -   Admin is logged in:
+                - All Tasks
+                - Profile
+                - Contact
+
     - [x] **Main section**
         - The main section contains the page specific information on every page.
     - [x] **Footer**
@@ -123,41 +165,116 @@ This site was not built for earning money, but the possibility is given. While i
 
     #### Features specific to Pages
 
-    - [x] **Landing page**
+    - [x] **Index page**
         - Hero imnage set to the background, which clearly represents the type of the webpage
         - A smaller window floating over the background, which highlight some topic of the content od the page and call to action
         - If the visitor accept the invitation and take action after clicking the "Learn more" button, gets to the Home page.
-    - [x] **About the Game page**
+    - [x] **Login**
         - This page is the first page, that is shown after the landing page. By seeing this page the visitor gets a short description about the game itslef.
         - The visitor also can see screenshots from the game, so when she/he starts to play they are already familiar with the layout.
         - As a last element on this page the visitor can click on a button, which takes her/him to the Game page and start the game
-    - [x] **Game page**
-        This Game page is the soul of this site. Visually it is divided into 3 sections:
-        - Header element with a question
-        - "Start New Game" button, which can be a pushed anytime during the game
-        - Score area where the visitor can follow up how many question is used from the total 10 questions and also how many correct and wrong answer has the visitor.
-        
-        At the end of the game (after answering all the 10 questions), there are 2 modals which can be shown:
-        - "Winner" modal:
-            This modal is shown if the number of the correct answers larger or equal than the number of the wrong answers. 
-        - "Loser" modal: 
-            This modal is shown if the number of the correct answers smaller than the number of the wrong answers.
-        The modal window also contains text and Smile icons to visulaize if the final result is positiv or negative.
-        There is also a section which shows the statistics of the game (number of correct and wrong answers).
+    - [x] **About page**
+        This page contain some real life cases when the visitor should use this page and a short description about the purpose of the site.
     - [x] **Contact page**
         This is the main page for the visitor if she/he wants to contact to the website developer.
-        This page is divided into 2 main sections:
-        - left side of the section contains a description in which cases the visitor can contact to the developer and also contains:
+        The visitor can get information about the following:
          - address
          - phone number
          - social media links
-         of the developer. 
-        - right section contains a contact form, where the visitor can leave her/his name/e-mail and the message.
-         this feature is fully set up through the email.js website 
+         of the developer.
+    - [x] **Profile page**
+        - This is the first page that the visitor see when she/he successfully identified her-/him-self through a username and password on the login page.
+        - This page contains the profile information which was given during the registration process
+        - The user has possibility to update this information except the username and password 
+    - [x] **Profile all task page**
+        - This page has several functions. As a basic the user see all the registered tasks in the database.
+        - Through the search function the user can filter up the displayed tasks. The user can search by keywords, which is compared with the Task name and Task description fields.
+        - On an individual task, the user can get further information:
+            - Orange task header background:
+                - The task was registered buy someone else and noone has applied for that yet. 
+                - Apply button still active for the user
+                - the user cannot edit or delete it
+            - Orange task header background with a light blue background text: I HAVE APPLIED:
+                - the task was created by someone else and the user applied to help with the task
+                - Apply button replaced by the contact info of the task creator
+                - user cannot Edit or Delete it
+            - Grey task header background with the text of: NOT AVAILABLE FOR YOU:
+                - The task has been created by someone else, but it has already been taken by someone else
+                - Apply button deactivated for the user
+                - the user cannot Edit or Delet it
+            - Green task header background
+                - the iuser created the task, but noone has applied for it yet
+                - the user CAN Edit or Delete it
+            - Green task header background with yellow background text HELP SHOWED UP:
+                - the user created the task and someone has already applied to help
+                - the user can see the volunteer contact information
+                - the user CAN Edit or Delete it
         
 
     ### Future Features
+
     This website and game is full of possibilities for future develpments and adding new features. Here are some possible future developments:
     - Adding a feature where the visitor can define the number of the questions her-/himself. 
     - Separate page with a form to uploading data into the database.
-    - After a certain number of the database it makes sense to have the possibility to play games based on professions or sex or origin of people.  
+    - After a certain number of the database it makes sense to have the possibility to play games based on professions or sex or origin of people. 
+
+    <a name="technologies"></a> 
+
+    ## Technologies Used
+
+    ### Languages Used
+
+    - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+    - [CSS3](https://developer.mozilla.org/en-US/docs/Archive/CSS3#:~:text=CSS3%20is%20the%20latest%20evolution,flexible%20box%20or%20grid%20layouts.)
+    - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+    - [Python](https://www.python.org/)
+
+    ### Workspace
+
+    - [Gitpod](https://gitpod.io/) was used as a virtual IDE workspace to build this site.
+
+    ### Version Control
+
+    - [Git](https://git-scm.com/) was used for version control by utilizing the Gitpod terminal to add and commit to Git and push to GitHub.
+    - [GitHub](https://github.com/) is used to store the code for this project after being pushed from Git.
+
+    ### Wireframing
+
+    - [Balsamiq](https://balsamiq.com/) was used to create the wireframes during the design process.
+
+    ### Responsive Design
+
+    - [Am I Responsive Design](http://ami.responsivedesign.is/)
+
+    ### Site Design
+
+    - [Font Awesome](https://fontawesome.com/) was used on all pages to add the icons.
+    - [Google Fonts](https://fonts.google.com/) was used to import the _Bangers_ font used within the site.
+    - [Favicon.io](https://favicon.io/favicon-generator/)
+
+    ### Database Design Technologies
+
+    - [MongoDB](https://www.mongodb.com/) was used to store the contents of the database, and allow full CRUD functionality.
+    - [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) was used to connect this Python / Flask app to MongoDB.
+
+    ### Frameworks, Libraries and Others
+
+    - [Heroku](https://www.heroku.com) was used to deploy the live site.
+    - [Google DevTools](https://developer.chrome.com/docs/devtools/) was used to check site responsiveness, and as a general debugger.
+    - [MaterializeCss](https://www.materializecss.com) was used to design attractive, functional webpage with CSS, Javascript, Html created UI library 
+    - [Lighthouse](https://developers.google.com/web/tools/lighthouse/) was used to check the site's Performance, Accessibility, Best Practices, and SEO.
+    - [Flask](https://flask.palletsprojects.com/en/2.0.x/) was used to help create the templating for this site.
+    - [Bootstrap](https://getbootstrap.com/) was used to create a beautiful, responsive website.
+    - [jQuery](https://jquery.com/) was used to make the DOM traversal easier within the JavaScript.
+    - [Jinja](https://jinja.palletsprojects.com/en/3.0.x/) was used to auto-populate the site with the contents of the database.
+    - [RandomKeygen](https://randomkeygen.com/) was used to generate a strong `SECRET_KEY`.
+    - [pip](https://pip.pypa.io/en/stable/) was used to install the required dependancies for this site.
+    - [dnspython](https://pypi.org/project/dnspython/) was used to provide access to DNS.
+    
+
+    ### Testing
+
+    - [W3C Markup Validation Service](https://validator.w3.org/) was used to test that the HTML is valid.
+    - [W3C CSS Validation Service](http://jigsaw.w3.org/css-validator/) was used to test that the CSS is valid.
+    - [JSHint](https://jshint.com/) was used to test that the JavaScript is valid.
+    - [PEP8](http://pep8online.com/) was used to validate the python syntax.
