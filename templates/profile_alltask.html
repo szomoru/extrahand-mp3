@@ -152,7 +152,7 @@
                       {% else %}
                       <span class="info-btn-height btn btn-light me-md-2 text-shadow font-style-own">Contact of help
                         requester:
-                        {{ tasks.bestcontact_requester }} </span>
+                        {{ task.bestcontact_requester }} </span>
                       {% endif %}
                     {% else %}
                     <a href="{{ url_for('apply_for_task', task_id=task._id ) }}"

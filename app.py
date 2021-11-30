@@ -154,36 +154,6 @@ def profile(username):
         username=user["username"], user=user)   
 
 
-@app.route("/edit_profile/<username>", methods=["GET", "POST"])
-def edit_profile(username):
-
-    user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
-        
-    if request.method == "POST":
-
-        submit = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
-            "fname": request.form.get("fname").lower(),
-            "lname": request.form.get("lname").lower(),
-            "age": request.form.get("age").lower(),
-            "address_l1": request.form.get("address_l1").lower(),
-            "address_l2": request.form.get("address_l2").lower(),
-            "city": request.form.get("city").lower(),
-            "postcode": request.form.get("postcode").lower(),
-            "cell": request.form.get("cell").lower(),
-            "email": request.form.get("email").lower()
-        }
-
-        mongo.db.users.update({"_id": ObjectId(user_id)}, submit)
-        flash("Profile Successfully Updated", "success")
-        return redirect(url_for("get_users"))
-
-    user = mongo.db.users.find_one({"_id": ObjectId(user_id)}) 
-    return render_template("profile.html", user=user)
-
-
 @app.route("/logout")
 def logout():
     # remove user from session cookie
@@ -207,11 +177,10 @@ def new_task():
             "duration": request.form.get("duration"),
             "comment": request.form.get("comment"),
             "created_by": session["user"],
+            "bestcontact_requester": request.form.get("bestcontact_requester"),
             "is_car": is_car,
             "is_outdoor": is_outdoor,
             "is_heavy_lift": is_heavy_lift,
-            "bestcontact_requester": request.form.get("bestcontact_requester"),
-            "is_booked": "off"
         }
         mongo.db.tasks.insert_one(task)
         flash("Task Successfully Added", "success")
@@ -242,10 +211,10 @@ def edit_task(task_id):
             "duration": request.form.get("duration"),
             "comment": request.form.get("comment"),
             "created_by": session["user"],
+            "bestcontact_requester": request.form.get("bestcontact_requester"),
             "is_car": is_car,
             "is_outdoor": is_outdoor,
-            "is_heavy_lift": is_heavy_lift,
-            "is_booked": "off"
+            "is_heavy_lift": is_heavy_lift
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Task Successfully Updated", "success")
@@ -271,12 +240,12 @@ def apply_for_task(task_id):
             "duration": request.form.get("duration"),
             "comment": request.form.get("comment"),
             "created_by": request.form.get("created_by"),
+            "bestcontact_provider": request.form.get("bestcontact_provider"),
             "is_car": is_car,
             "is_outdoor": is_outdoor,
             "is_heavy_lift": is_heavy_lift,
             "is_booked": "on",
-            "booked_by": session["user"],
-            "bestcontact_provider": request.form.get("bestcontact_provider")
+            "booked_by": session["user"]            
         }
         mongo.db.tasks.update({"_id": ObjectId(task_id)}, submit)
         flash("Applied Successfully", "success")
