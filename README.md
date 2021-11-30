@@ -1,5 +1,5 @@
 <h1 align="center">Extra Hand</h1>
-<h1 align="center"><img src="./assets/img/readme/responsive.PNG" /></h1>
+<h1 align="center"><img src="docs/test/amirespinsive_extrahand.JPG" /></h1>
 
 :point_right: <a href="https://szomoru.github.io/extrahand-mp3/">Live Website</a> :point_left:
 
@@ -169,7 +169,9 @@ This site was not built for earning money, but the possibility is given. While i
         - Hero imnage set to the background, which clearly represents the type of the webpage
         - A smaller window floating over the background, which highlight some topic of the content od the page and call to action
         - If the visitor accept the invitation and take action after clicking the "Learn more" button, gets to the Home page.
-    - [x] **Login**
+    - [x] **Register page**
+        - the user can register and get her/his own account to use full potential of the site
+    - [x] **Login page**
         - This page is the first page, that is shown after the landing page. By seeing this page the visitor gets a short description about the game itslef.
         - The visitor also can see screenshots from the game, so when she/he starts to play they are already familiar with the layout.
         - As a last element on this page the visitor can click on a button, which takes her/him to the Game page and start the game
@@ -209,14 +211,27 @@ This site was not built for earning money, but the possibility is given. While i
                 - the user created the task and someone has already applied to help
                 - the user can see the volunteer contact information
                 - the user CAN Edit or Delete it
+        - [x] **Profile New task page**
+            - the user can register a new task
+        - [x] **Profile Edit task page**
+            - the user can edit an already existing task content. The task must be created the user
+        - [x] **Profile Apply task page** 
+            - the user apply for a task through this page. The user can add further information to the help requier eg. desired contact information
+        - [x] **Profile All My Task page**
+            - the user can see only the following task in 2 separate sections:
+                - the user created help requests
+                - the user applications to help
+        - [x] **Error handling pages**
+            -   404: Page not found
+            -   505: Internal server Error
         
 
     ### Future Features
 
-    This website and game is full of possibilities for future develpments and adding new features. Here are some possible future developments:
-    - Adding a feature where the visitor can define the number of the questions her-/himself. 
-    - Separate page with a form to uploading data into the database.
-    - After a certain number of the database it makes sense to have the possibility to play games based on professions or sex or origin of people. 
+    There is a lot of potential in this webpage. The focus this time was that the functionalities working properly, so the following features can be added in the future:
+    -   Applying more icons and symbols for better UX
+    - Automatic e-mail notification to the right persons if the status of one of the task is changed. 
+    - Adding a parallel section where professional companies can search for possible clients among the help seekers. 
 
     <a name="technologies"></a> 
 
